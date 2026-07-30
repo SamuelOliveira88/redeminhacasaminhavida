@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rede Minha Casa Minha Vida</title>
+<style>
+  :root{
+    --deep: #0e4a3a;
+    --deep-2: #145a46;
+    --gold: #f2a93b;
+    --gold-2: #f7c46c;
+    --bg: #f5f7f2;
+    --ink: #182420;
+    --muted: #6f7d76;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .sans{font-family: Arial, Helvetica, sans-serif;}
+
+  /* HEADER */
+  header{
+    background: linear-gradient(180deg, var(--deep) 0%, var(--deep-2) 100%);
+    color: white;
+    padding: 18px 20px;
+    position: sticky;
+    top:0;
+    z-index: 50;
+    box-shadow: 0 2px 12px rgba(0,0,0,.2);
+  }
+  .header-inner{
+    max-width: 1180px;
+    margin: 0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .brand .mark{
+    width: 40px; height:40px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:bold; color: var(--gold);
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+  }
+  .brand h1{
+    font-size: 18px;
+    letter-spacing: .5px;
+    line-height:1.15;
+  }
+  .brand span{
+    display:block;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: var(--gold-2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .cta-top{
+    background: var(--gold);
+    color: var(--deep);
+    font-family: Arial, sans-serif;
+    font-weight:700;
+    font-size: 13px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration:none;
+    letter-spacing:.3px;
+    white-space:nowrap;
+    border:none;
+    cursor:pointer;
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height: 58vh;
+    display:flex;
+    align-items:center;
+    color:white;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image: url('images/hero_vista_plaza.jpg');
+    background-size: cover;
+    background-position: center 60%;
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background: linear-gradient(90deg, rgba(14,74,58,.95) 0%, rgba(14,74,58,.78) 45%, rgba(14,74,58,.4) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 24px;
+  }
+  .eyebrow{
+    font-family: Arial, sans-serif;
+    color: var(--gold-2);
+    letter-spacing: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .hero h2{
+    font-size: 40px;
+    line-height: 1.15;
+    max-width: 620px;
+    margin-bottom: 16px;
+  }
+  .hero p{
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    max-width: 520px;
+    color: #e9f2ee;
+    line-height:1.6;
+    margin-bottom: 20px;
+  }
+  .hero-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .hero-tag{
+    font-family: Arial, sans-serif;
+    font-size: 12.5px;
+    font-weight:700;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(247,196,108,.55);
+    color: var(--gold-2);
+    padding: 7px 14px;
+    border-radius: 999px;
+  }
+  .hero-btn{
+    display:inline-block;
+    background: var(--gold);
+    color: var(--deep);
+    font-family: Arial, sans-serif;
+    font-weight:700;
+    padding: 14px 28px;
+    border-radius: 999px;
+    text-decoration:none;
+    font-size: 15px;
+    border:none;
+    cursor:pointer;
+  }
+
+  /* MCMV EXPLAINER */
+  .explainer{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 20px 10px;
+  }
+  .explainer h2{
+    font-size: 26px;
+    color: var(--deep);
+    margin-bottom: 8px;
+  }
+  .explainer > p.sans{
+    color: var(--muted);
+    font-size: 14.5px;
+    max-width: 720px;
+    line-height:1.6;
+    margin-bottom: 28px;
+  }
+  .explainer-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .explainer-card{
+    background:white;
+    border-radius: 14px;
+    padding: 20px 20px 22px;
+    box-shadow: 0 4px 14px rgba(14,74,58,.07);
+  }
+  .explainer-card .ic{
+    width: 38px; height:38px;
+    background: var(--deep);
+    color: var(--gold-2);
+    border-radius: 10px;
+    display:flex; align-items:center; justify-content:center;
+    font-family: Arial, sans-serif;
+    font-weight:700;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .explainer-card h3{
+    font-size: 16px;
+    color: var(--deep);
+    margin-bottom: 6px;
+  }
+  .explainer-card p{
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #4d5a54;
+    line-height: 1.55;
+  }
+
+  /* TABS */
+  .tabs-wrap{
+    max-width:1180px;
+    margin: 40px auto 0;
+    position:relative;
+    z-index: 5;
+    padding: 0 20px;
+  }
+  .tabs{
+    background:white;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(14,74,58,.12);
+    display:flex;
+    padding: 6px;
+    gap:6px;
+  }
+  .tab-btn{
+    flex:1;
+    font-family: Arial, sans-serif;
+    font-weight:700;
+    font-size: 14px;
+    padding: 14px 10px;
+    border:none;
+    background: transparent;
+    color: var(--deep);
+    border-radius: 10px;
+    cursor:pointer;
+    letter-spacing:.3px;
+    transition: all .2s ease;
+  }
+  .tab-btn.active{
+    background: var(--deep);
+    color: var(--gold-2);
+  }
+
+  /* GRID */
+  .section{
+    max-width:1180px;
+    margin: 0 auto;
+    padding: 30px 20px 80px;
+  }
+  .region-panel{ display:none; }
+  .region-panel.active{ display:block; }
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 26px;
+    margin-top: 30px;
+  }
+  .card{
+    background:white;
+    border-radius: 16px;
+    overflow:hidden;
+    box-shadow: 0 6px 20px rgba(14,74,58,.08);
+    display:flex;
+    flex-direction:column;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(14,74,58,.16);
+  }
+  .card-img{
+    height: 200px;
+    background-size: cover;
+    background-position:center;
+    position:relative;
+  }
+  .card-img.placeholder{
+    background: linear-gradient(135deg, var(--deep) 0%, var(--deep-2) 60%, #1c6a52 100%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card-img.placeholder .ph-label{
+    font-family: Arial, sans-serif;
+    color: var(--gold-2);
+    font-size: 12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    border: 1px solid rgba(247,196,108,.5);
+    padding: 8px 14px;
+    border-radius: 999px;
+  }
+  .badge{
+    position:absolute;
+    top:12px; left:12px;
+    background: rgba(14,74,58,.88);
+    color: var(--gold-2);
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    letter-spacing:.5px;
+  }
+  .card-body{
+    padding: 18px 20px 20px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .card-body h3{
+    font-size: 19px;
+    color: var(--deep);
+    margin-bottom: 4px;
+  }
+  .card-loc{
+    font-family: Arial, sans-serif;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .card-desc{
+    font-family: Arial, sans-serif;
+    font-size: 13.5px;
+    color: #4a5750;
+    line-height:1.55;
+    margin-bottom: 14px;
+    flex:1;
+  }
+  .card-price{
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .card-price strong{
+    color: var(--deep);
+    font-size: 15.5px;
+    font-family: Georgia, serif;
+  }
+  .card-actions{
+    display:flex;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .btn-sm{
+    flex:1;
+    text-align:center;
+    font-family: Arial, sans-serif;
+    font-size: 12.5px;
+    font-weight:700;
+    padding: 10px 8px;
+    border-radius: 8px;
+    text-decoration:none;
+    letter-spacing:.2px;
+    border:none;
+    cursor:pointer;
+  }
+  .btn-primary{ background: var(--gold); color: var(--deep); }
+
+  .section-title{
+    font-size: 26px;
+    color: var(--deep);
+    margin-bottom: 4px;
+  }
+  .section-sub{
+    font-family: Arial, sans-serif;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  footer{
+    background: var(--deep);
+    color: #cfe3da;
+    text-align:center;
+    padding: 30px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+  }
+  footer .gold{ color: var(--gold-2); font-weight:700; }
+
+  /* MODAL */
+  .modal-overlay{
+    display:none;
+    position:fixed; inset:0;
+    background: rgba(14,20,18,.55);
+    z-index: 200;
+    align-items:center;
+    justify-content:center;
+    padding: 20px;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{
+    background:white;
+    border-radius: 18px;
+    max-width: 420px;
+    width:100%;
+    padding: 28px 26px 26px;
+    position:relative;
+  }
+  .modal-close{
+    position:absolute;
+    top:14px; right:16px;
+    background:none; border:none;
+    font-size: 20px;
+    color: var(--muted);
+    cursor:pointer;
+    font-family: Arial, sans-serif;
+  }
+  .modal-box h3{
+    font-size: 20px;
+    color: var(--deep);
+    margin-bottom: 4px;
+  }
+  .modal-sub{
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .modal-sub strong{ color: var(--deep); }
+  .field{ margin-bottom: 12px; }
+  .field label{
+    display:block;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight:700;
+    color: var(--deep);
+    margin-bottom: 5px;
+  }
+  .field input{
+    width:100%;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 11px 12px;
+    border: 1.5px solid #dfe6e1;
+    border-radius: 8px;
+    outline:none;
+  }
+  .field input:focus{ border-color: var(--deep); }
+  .modal-submit{
+    width:100%;
+    margin-top: 10px;
+    background: var(--deep);
+    color: var(--gold-2);
+    font-family: Arial, sans-serif;
+    font-weight:700;
+    font-size: 14.5px;
+    padding: 13px;
+    border:none;
+    border-radius: 10px;
+    cursor:pointer;
+  }
+  .modal-status{
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    text-align:center;
+    margin-top: 12px;
+    display:none;
+  }
+  .modal-status.show{ display:block; }
+  .modal-status.ok{ color: var(--deep); font-weight:700; }
+  .modal-status.err{ color: #b23b3b; }
+
+  @media (max-width: 640px){
+    .hero h2{ font-size: 28px; }
+    .tabs{ flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="mark">MV</div>
+      <h1>Rede Minha Casa<br>Minha Vida<span>Programa MCMV</span></h1>
+    </div>
+    <button class="cta-top" onclick="openModal('Interesse geral')">Cadastrar meu interesse</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow sans">Programa Minha Casa Minha Vida</div>
+    <h2>O imóvel próprio começa com a aprovação certa.</h2>
+    <p class="sans">Reunimos empreendimentos do programa MCMV em Taboão da Serra e São Paulo em um só lugar. A gente entende sua renda primeiro, depois mostra o apartamento certo.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">A partir de R$ 230 mil</span>
+      <span class="hero-tag">Escritura grátis</span>
+      <span class="hero-tag">Subsídio do governo</span>
+      <span class="hero-tag">Uso do FGTS</span>
+    </div>
+    <button class="hero-btn" onclick="openModal('Interesse geral')">Quero ser atendido</button>
+  </div>
+</section>
+
+<div class="explainer">
+  <h2>O que é o Minha Casa Minha Vida</h2>
+  <p class="sans">É o programa do governo federal que facilita a compra da casa própria para quem tem renda familiar mais baixa — com subsídio, juros menores e documentação mais simples do que num financiamento comum.</p>
+  <div class="explainer-grid">
+    <div class="explainer-card">
+      <div class="ic">1</div>
+      <h3>Subsídio do governo</h3>
+      <p>Parte do valor do imóvel é abatida direto pelo governo, de acordo com a sua faixa de renda.</p>
+    </div>
+    <div class="explainer-card">
+      <div class="ic">2</div>
+      <h3>Use seu FGTS</h3>
+      <p>O saldo do FGTS pode entrar como parte do pagamento, reduzindo o valor financiado.</p>
+    </div>
+    <div class="explainer-card">
+      <div class="ic">3</div>
+      <h3>Escritura grátis</h3>
+      <p>Os empreendimentos da rede saem com escritura sem custo adicional para você.</p>
+    </div>
+    <div class="explainer-card">
+      <div class="ic">4</div>
+      <h3>Parcelas que cabem no bolso</h3>
+      <p>Taxas reduzidas e parcelas calculadas de acordo com o que você já paga de aluguel hoje.</p>
+    </div>
+  </div>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs sans">
+    <button class="tab-btn active" onclick="showRegion('geral')">Geral</button>
+    <button class="tab-btn" onclick="showRegion('taboao')">Taboão da Serra</button>
+    <button class="tab-btn" onclick="showRegion('sp')">São Paulo</button>
+  </div>
+</div>
+
+<section class="section" id="empreendimentos">
+
+  <!-- GERAL -->
+  <div class="region-panel active" id="panel-geral">
+    <h2 class="section-title">Todos os empreendimentos</h2>
+    <p class="section-sub">Taboão da Serra e São Paulo, num só lugar. A partir de R$ 230 mil, com escritura grátis e benefícios do governo.</p>
+    <div class="grid" id="grid-geral"></div>
+  </div>
+
+  <!-- TABOÃO DA SERRA -->
+  <div class="region-panel" id="panel-taboao">
+    <h2 class="section-title">Empreendimentos em Taboão da Serra</h2>
+    <p class="section-sub">A partir de R$ 230 mil, com escritura grátis e benefícios do governo.</p>
+    <div class="grid" id="grid-taboao"></div>
+  </div>
+
+  <!-- SÃO PAULO -->
+  <div class="region-panel" id="panel-sp">
+    <h2 class="section-title">Empreendimentos em São Paulo</h2>
+    <p class="section-sub">A partir de R$ 230 mil, com escritura grátis e benefícios do governo.</p>
+    <div class="grid" id="grid-sp"></div>
+  </div>
+
+</section>
+
+<footer>
+  <p><span class="gold">Rede Minha Casa Minha Vida</span> · cadastre seu interesse e um consultor entra em contato</p>
+  <p style="margin-top:6px;">Programa Minha Casa Minha Vida (MCMV) · Taboão da Serra e São Paulo</p>
+</footer>
+
+<!-- MODAL DE CADASTRO -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3>Quero ser atendido</h3>
+    <p class="modal-sub">Interesse em: <strong id="modalEmpreendimento">Interesse geral</strong>. Preencha e um consultor te chama.</p>
+    <form id="leadForm">
+      <div class="field">
+        <label>Nome completo</label>
+        <input type="text" id="fNome" required>
+      </div>
+      <div class="field">
+        <label>WhatsApp</label>
+        <input type="tel" id="fTelefone" placeholder="(11) 90000-0000" required>
+      </div>
+      <div class="field">
+        <label>E-mail (opcional)</label>
+        <input type="email" id="fEmail">
+      </div>
+      <button class="modal-submit" type="submit">Enviar cadastro</button>
+      <p class="modal-status" id="modalStatus"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+// ---------- Dados dos empreendimentos ----------
+var empreendimentos = [
+  { nome:"Vista Plaza Residencial", regiao:"taboao", loc:"Taboão da Serra", badge:"Lançamento",
+    img:"images/vp_lobby.jpg",
+    desc:"Lazer completo: pizza gourmet, pet place, lounge com wi-fi, lobby decorado. 1 e 2 dorms com vaga." },
+  { nome:"Abiatar Residence Tower", regiao:"taboao", loc:"Jardim da Glória, Taboão da Serra", badge:"285 unidades",
+    img:"https://images.weserv.nl/?url=abiatar.com/wp-content/uploads/residence-tower.jpg&w=800",
+    desc:"2 dorms com vaga. Empreendimento com 285 unidades e ampla área de lazer." },
+  { nome:"Áurea Sky", regiao:"taboao", loc:"Pq. Ind. das Oliveiras, Taboão da Serra", badge:"Lazer premium",
+    img:"https://images.weserv.nl/?url=abiatar.com/wp-content/uploads/aurea-sky-fachada.jpg&w=800",
+    desc:"2 dorms (41 e 47 m²) com vaga. Empreendimento moderno, lazer premium e vista privilegiada." },
+  { nome:"Residencial Clube Laguna", regiao:"taboao", loc:"Parque Laguna, Taboão da Serra", badge:"Clube completo",
+    img:"https://images.weserv.nl/?url=abiatar.com/wp-content/uploads/clube-laguna-fachada.jpg&w=800",
+    desc:"1 e 2 dorms (40 e 41 m²) com vaga. Estrutura de clube completa e financiamento facilitado." },
+  { nome:"Villa São Francisco II", regiao:"taboao", loc:"Jardim Três Irmãos, Taboão da Serra", badge:"Perto do Shopping",
+    img:"https://images.weserv.nl/?url=abiatar.com/wp-content/uploads/villa-sao-francisco.jpg&w=800",
+    desc:"2 dorms (42 m²) com vaga. Próximo ao Shopping Taboão e Parque das Hortênsias." },
+  { nome:"Villa São Francisco (I, III, IV)", regiao:"taboao", loc:"Jardim Três Irmãos, Taboão da Serra", badge:null,
+    img:null, desc:"Demais fases do Villa São Francisco. Fale com um consultor para disponibilidade atual." },
+  { nome:"Griffe Jasmins Residencial", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:null,
+    img:null, desc:"Empreendimento MCMV na região dos Jasmins. Fale com um consultor para plantas e disponibilidade." },
+  { nome:"Griffe Jasmins 2 Residencial", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:null,
+    img:null, desc:"Segunda fase do Griffe Jasmins. Fale com um consultor para plantas e disponibilidade." },
+  { nome:"Griffe Kizaemon", regiao:"taboao", loc:"Jardim Iracema, Taboão da Serra", badge:null,
+    img:null, desc:"Empreendimento MCMV pronto para morar. Fale com um consultor para disponibilidade." },
+  { nome:"Vista Parque Chácara Joquey", regiao:"taboao", loc:"Taboão da Serra", badge:null,
+    img:null, desc:"Empreendimento MCMV. Fale com um consultor para plantas e disponibilidade." },
+  { nome:"Vista Parque Clube II", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:null,
+    img:null, desc:"1 dorm com vaga, com opção garden disponível. Fale com um consultor para disponibilidade." },
+  { nome:"Innovare Aricanduva", regiao:"sp", loc:"Vila Aricanduva, São Paulo", badge:"Primeiro imóvel",
+    img:"https://images.weserv.nl/?url=abiatar.com/wp-content/uploads/innovare-aricanduva.jpg&w=800",
+    desc:"2 dorms (38 m²) com vaga. Excelente para primeiro imóvel com subsídio do governo e uso do FGTS." },
+  { nome:"Up Vila Santa Catarina", regiao:"sp", loc:"Vila Santa Catarina, São Paulo", badge:"Zona Sul",
+    img:"https://images.weserv.nl/?url=abiatar.com/wp-content/uploads/up-santa-catarina.jpg&w=800",
+    desc:"2 dorms (36 a 37 m²) com vaga. Região valorizada da Zona Sul, perto de comércios e transporte." },
+  { nome:"Residencial Algarve", regiao:"sp", loc:"Rio Pequeno, São Paulo", badge:"Zona Oeste",
+    img:"https://images.weserv.nl/?url=abiatar.com/wp-content/uploads/algarve.jpg&w=800",
+    desc:"2 dorms em localização estratégica da Zona Oeste, com fácil acesso à USP e Marginais." },
+  { nome:"Innovare Portal do Morumbi", regiao:"sp", loc:"Guilherme Dumon Vilares, São Paulo", badge:null,
+    img:null, desc:"Empreendimento MCMV em construção na região do Morumbi. Fale com um consultor para disponibilidade." },
+  { nome:"Innovare Morumbi", regiao:"sp", loc:"São Paulo", badge:null,
+    img:null, desc:"Empreendimento MCMV na região do Morumbi. Fale com um consultor para disponibilidade." },
+];
+
+function cardHTML(e){
+  var badgeHtml = e.badge ? ('<span class="badge">' + e.badge + '</span>') : '';
+  var imgBlock = e.img
+    ? '<div class="card-img" style="background-image:url(\'' + e.img + '\')">' + badgeHtml + '</div>'
+    : '<div class="card-img placeholder"><span class="ph-label">Book em atualização</span></div>';
+  var safeName = e.nome.replace(/'/g, "\\'");
+  return '' +
+    '<div class="card">' +
+      imgBlock +
+      '<div class="card-body">' +
+        '<h3>' + e.nome + '</h3>' +
+        '<div class="card-loc">' + e.loc + '</div>' +
+        '<p class="card-desc">' + e.desc + '</p>' +
+        '<div class="card-price">A partir de<br><strong>Sob consulta</strong></div>' +
+        '<div class="card-actions">' +
+          '<button class="btn-sm btn-primary" onclick="openModal(\'' + safeName + '\')">Quero saber mais</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+}
+
+var gridGeral = document.getElementById('grid-geral');
+var gridTaboao = document.getElementById('grid-taboao');
+var gridSp = document.getElementById('grid-sp');
+for (var i = 0; i < empreendimentos.length; i++){
+  var e = empreendimentos[i];
+  gridGeral.innerHTML += cardHTML(e);
+  if(e.regiao === 'taboao') gridTaboao.innerHTML += cardHTML(e);
+  if(e.regiao === 'sp') gridSp.innerHTML += cardHTML(e);
+}
+
+// ---------- Tabs ----------
+function showRegion(region){
+  var panels = document.querySelectorAll('.region-panel');
+  for (var i = 0; i < panels.length; i++){ panels[i].classList.remove('active'); }
+  var tabs = document.querySelectorAll('.tab-btn');
+  for (var j = 0; j < tabs.length; j++){ tabs[j].classList.remove('active'); }
+  document.getElementById('panel-' + region).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ---------- Modal / cadastro de interesse ----------
+function openModal(nomeEmpreendimento){
+  document.getElementById('modalEmpreendimento').textContent = nomeEmpreendimento;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.getElementById('modalStatus').classList.remove('show','ok','err');
+  document.getElementById('leadForm').reset();
+}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+// Webhook de leads do Alexandria (grupo Leads On) — token próprio da landing page.
+var ALEXANDRIA_TOKEN = "n3zMDfeSec9ZArrkTPuW6rYoAZPLzcLj5gZyEkxQ";
+var ALEXANDRIA_GRUPO_ID = "10b02e8a-3ae0-40ad-b4d3-fe62396939ee"; // grupo Leads On
+
+document.getElementById('leadForm').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var statusEl = document.getElementById('modalStatus');
+  var nome = document.getElementById('fNome').value.trim();
+  var telefoneRaw = document.getElementById('fTelefone').value.trim();
+  var telefoneDigits = telefoneRaw.replace(/\D/g, '');
+  if (telefoneDigits.length > 0 && telefoneDigits.slice(0,2) !== '55') {
+    telefoneDigits = '55' + telefoneDigits;
+  }
+  var email = document.getElementById('fEmail').value.trim();
+  var empreendimento = document.getElementById('modalEmpreendimento').textContent;
+
+  statusEl.textContent = "Enviando...";
+  statusEl.className = "modal-status show";
+
+  var url = "https://alexandrialeds.app/api/public/webhook?token=" + ALEXANDRIA_TOKEN + "&grupo_id=" + ALEXANDRIA_GRUPO_ID;
+
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      nome: nome,
+      telefone: telefoneDigits,
+      email: email,
+      grupo_id: ALEXANDRIA_GRUPO_ID,
+      mensagem: "Interesse: " + empreendimento + " (origem: site Rede MCMV)"
+    })
+  }).then(function(resp){
+    if(resp.ok){
+      statusEl.textContent = "Cadastro enviado! Em breve um consultor entra em contato.";
+      statusEl.className = "modal-status show ok";
+      document.getElementById('leadForm').reset();
+    } else {
+      statusEl.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
+      statusEl.className = "modal-status show err";
+    }
+  }).catch(function(err){
+    statusEl.textContent = "Erro de conexão. Tente novamente em instantes.";
+    statusEl.className = "modal-status show err";
+  });
+});
+</script>
+
+</body>
+</html>
