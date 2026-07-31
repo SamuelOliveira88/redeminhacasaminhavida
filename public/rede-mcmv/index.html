@@ -467,7 +467,29 @@
       .modal-status.ok{ color: var(--deep); font-weight:700; }
       .modal-status.err{ color: #b23b3b; }
 
+      .float-cta{
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 999;
+        border: none;
+        cursor: pointer;
+        border-radius: 999px;
+        padding: 14px 22px;
+        font-family: Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        color: #fff;
+        background: #25D366;
+        box-shadow: 0 10px 26px rgba(0,0,0,.28);
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .float-cta:hover{ transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.34); }
+
       @media (max-width: 640px){
+        .float-cta{ right: 12px; bottom: 12px; padding: 12px 18px; font-size: 13px; }
         .hero h2{ font-size: 28px; }
         .tabs{ flex-direction: column; }
       }
@@ -492,7 +514,7 @@
         <h2>O imóvel próprio começa com a aprovação certa.</h2>
         <p class="sans">
           Reunimos empreendimentos do programa MCMV em Taboão da Serra e São Paulo em um só lugar. A gente entende sua
-          renda primeiro, depois mostra o apartamento certo.
+          renda primeiro, depois MOSTRAMOS o apartamento certo.
         </p>
         <div class="hero-tags">
           <span class="hero-tag">A partir de R$ 230 mil</span>
@@ -507,7 +529,7 @@
     <div class="explainer">
       <h2>O que é o Minha Casa Minha Vida</h2>
       <p class="sans">
-        É o programa do governo federal que facilita a compra da casa própria para quem tem renda familiar mais baixa —
+        É o programa do Governo Federal que facilita a compra da casa própria para quem tem renda familiar mais baixa —
         com subsídio, juros menores e documentação mais simples do que num financiamento comum.
       </p>
       <div class="explainer-grid">
@@ -524,7 +546,7 @@
         <div class="explainer-card">
           <div class="ic">3</div>
           <h3>Escritura grátis</h3>
-          <p>Os empreendimentos da rede saem com escritura sem custo adicional para você.</p>
+          <p>Os empreendimentos da Rede saem com escritura sem custo adicional para você.</p>
         </div>
         <div class="explainer-card">
           <div class="ic">4</div>
@@ -574,6 +596,11 @@
       </p>
       <p style="margin-top:6px;">Programa Minha Casa Minha Vida (MCMV) · Taboão da Serra e São Paulo</p>
     </footer>
+
+    <!-- BOTAO FLUTUANTE DE CADASTRO -->
+    <button class="float-cta" onclick="openModal('Interesse geral')" aria-label="Cadastrar meu interesse">
+      Cadastre-se
+    </button>
 
     <!-- MODAL DE CADASTRO -->
     <div class="modal-overlay" id="modalOverlay">
@@ -702,6 +729,17 @@
       var ALEXANDRIA_TOKEN = "n3zMDfeSec9ZArrkTPuW6rYoAZPLzcLj5gZyEkxQ";
       var ALEXANDRIA_GRUPO_ID = "10b02e8a-3ae0-40ad-b4d3-fe62396939ee"; // grupo Leads On
 
+      // WhatsApp do consultor que recebe os cadastros
+      var WHATSAPP_DESTINO = "5511920036576";
+      function encaminharWhatsApp(nome, telefone, email, empreendimento){
+        var texto = "Novo cadastro pelo site Rede MCMV%0A%0A"
+          + "Nome: " + nome + "%0A"
+          + "WhatsApp: " + telefone + "%0A"
+          + (email ? "E-mail: " + email + "%0A" : "")
+          + "Interesse: " + empreendimento;
+        window.open("https://wa.me/" + WHATSAPP_DESTINO + "?text=" + encodeURIComponent(decodeURIComponent(texto)), "_blank");
+      }
+
       document.getElementById('leadForm').addEventListener('submit', function(ev){
         ev.preventDefault();
         var statusEl = document.getElementById('modalStatus');
@@ -733,14 +771,16 @@
           if(resp.ok){
             statusEl.textContent = "Cadastro enviado! Em breve um consultor entra em contato.";
             statusEl.className = "modal-status show ok";
+            encaminharWhatsApp(nome, telefoneRaw, email, empreendimento);
             document.getElementById('leadForm').reset();
           } else {
             statusEl.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
             statusEl.className = "modal-status show err";
           }
         }).catch(function(err){
-          statusEl.textContent = "Erro de conexão. Tente novamente em instantes.";
-          statusEl.className = "modal-status show err";
+          statusEl.textContent = "Cadastro enviado pelo WhatsApp.";
+          statusEl.className = "modal-status show ok";
+          encaminharWhatsApp(nome, telefoneRaw, email, empreendimento);
         });
       });
     </script>
