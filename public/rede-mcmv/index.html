@@ -597,10 +597,26 @@
       <p style="margin-top:6px;">Programa Minha Casa Minha Vida (MCMV) · Taboão da Serra e São Paulo</p>
     </footer>
 
-    <!-- BOTAO FLUTUANTE DE CADASTRO -->
-    <button class="float-cta" onclick="openModal('Interesse geral')" aria-label="Cadastrar meu interesse">
-      Cadastre-se
-    </button>
+    <!-- Totem flutuante BI@ -->
+    <div id="bia-totem" style="position:fixed;bottom:20px;right:20px;z-index:99999;font-family:system-ui,sans-serif">
+      <iframe id="bia-totem-frame" src="https://id-preview--663ee723-8aec-4a11-a239-bba27a58b46c.lovable.app/receptor?embed=true&amp;origem=totem"
+        style="display:none;width:min(92vw,380px);height:min(70vh,620px);border:0;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25);background:#fff"
+        title="Cadastro BI@"></iframe>
+      <button id="bia-totem-btn" type="button"
+        style="margin-top:10px;float:right;border:0;cursor:pointer;padding:14px 20px;border-radius:999px;background:#0B1F3B;color:#fff;font-weight:600;box-shadow:0 10px 24px rgba(0,0,0,.25)">
+        Falar com especialista
+      </button>
+    </div>
+    <script>
+      (function(){
+        var f=document.getElementById('bia-totem-frame'),b=document.getElementById('bia-totem-btn');
+        b.addEventListener('click',function(){
+          var open=f.style.display!=='none';
+          f.style.display=open?'none':'block';
+          b.textContent=open?'Falar com especialista':'Fechar';
+        });
+      })();
+    </script>
 
     <!-- MODAL DE CADASTRO -->
     <div class="modal-overlay" id="modalOverlay">
