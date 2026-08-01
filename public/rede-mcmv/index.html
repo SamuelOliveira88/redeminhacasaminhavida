@@ -84,15 +84,15 @@
         cursor:pointer;
       }
 
-      /* FLOATING PROMO BANNER */
+      /* FLOATING PROMO BANNER - HAPPY VIBE */
       .promo-float{
         position: fixed;
         bottom: 22px;
         left: 22px;
         z-index: 99998;
-        background: linear-gradient(135deg, #f2a93b 0%, #f7c46c 50%, #f2a93b 100%);
-        background-size: 200% 200%;
-        color: #0e2a1f;
+        background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffd23f 50%, #f7931e 75%, #ff6b35 100%);
+        background-size: 300% 300%;
+        color: #4a1500;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 900;
         font-size: 14px;
@@ -100,45 +100,60 @@
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 0.4px;
-        padding: 14px 18px;
-        border-radius: 16px;
-        box-shadow: 0 10px 28px rgba(242,169,59,.45), 0 0 0 3px rgba(255,255,255,.25);
+        padding: 16px 20px;
+        border-radius: 999px;
+        box-shadow: 0 12px 32px rgba(255,107,53,.55), 0 0 0 4px rgba(255,255,255,.5), 0 0 24px rgba(255,215,0,.6);
         cursor: pointer;
-        max-width: min(90vw, 260px);
-        animation: promo-pulse 2.4s ease-in-out infinite, promo-float 3s ease-in-out infinite, promo-shine 3s linear infinite;
+        max-width: min(90vw, 280px);
+        animation: promo-happy-pulse 1.8s ease-in-out infinite, promo-happy-bounce 2.2s ease-in-out infinite, promo-happy-rainbow 4s linear infinite;
         transition: transform .15s ease;
       }
-      .promo-float:hover{ transform: scale(1.04); }
+      .promo-float:hover{ transform: scale(1.06) rotate(-2deg); }
+      .promo-float .emoji{
+        display: inline-block;
+        font-size: 20px;
+        margin-right: 4px;
+        animation: emoji-wiggle 1.2s ease-in-out infinite;
+      }
       .promo-float small{
         display: block;
         font-size: 11px;
         font-weight: 700;
-        color: #5a3d0a;
-        margin-top: 4px;
+        color: #6b2000;
+        margin-top: 5px;
         letter-spacing: .6px;
       }
-      @keyframes promo-pulse{
-        0%, 100% { box-shadow: 0 10px 28px rgba(242,169,59,.45), 0 0 0 3px rgba(255,255,255,.25); }
-        50% { box-shadow: 0 14px 36px rgba(242,169,59,.65), 0 0 0 5px rgba(255,255,255,.35); }
+      @keyframes promo-happy-pulse{
+        0%, 100% { box-shadow: 0 12px 32px rgba(255,107,53,.55), 0 0 0 4px rgba(255,255,255,.5), 0 0 24px rgba(255,215,0,.6); }
+        50% { box-shadow: 0 18px 44px rgba(255,107,53,.75), 0 0 0 7px rgba(255,255,255,.7), 0 0 40px rgba(255,215,0,.9); }
       }
-      @keyframes promo-float{
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
+      @keyframes promo-happy-bounce{
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        25% { transform: translateY(-10px) rotate(1.5deg); }
+        50% { transform: translateY(-4px) rotate(-1deg); }
+        75% { transform: translateY(-12px) rotate(1deg); }
       }
-      @keyframes promo-shine{
-        0% { background-position: 200% 0; }
-        100% { background-position: -200% 0; }
+      @keyframes promo-happy-rainbow{
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      @keyframes emoji-wiggle{
+        0%, 100% { transform: rotate(-10deg); }
+        50% { transform: rotate(10deg); }
       }
       @media (max-width: 480px){
         .promo-float{
-          bottom: 86px;
-          left: 14px;
+          bottom: 88px;
+          left: 12px;
           font-size: 12px;
-          padding: 12px 14px;
-          max-width: 210px;
+          padding: 13px 16px;
+          max-width: 220px;
         }
         .promo-float small{ font-size: 10px; }
+        .promo-float .emoji{ font-size: 18px; }
       }
+
 
 
       /* HERO */
@@ -677,9 +692,10 @@
 
     <!-- Blão flutuante promoção -->
     <button class="promo-float" id="promoBanner" type="button" onclick="document.getElementById('bia-totem-btn').click()">
-      Parcelas durante obra<br>a partir de <strong>R$ 800,00</strong>
+      <span class="emoji">🎉</span> Parcelas durante obra<br>a partir de <strong>R$ 800,00</strong>
       <small>Clique e fale com especialista</small>
     </button>
+
 
 
     <!-- MODAL DE CADASTRO -->
