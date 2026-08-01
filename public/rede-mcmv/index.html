@@ -722,7 +722,6 @@
       <button id="bia-totem-btn" type="button">Falar com especialista</button>
     </div>
     <script>
-
       (function(){
         var f=document.getElementById('bia-totem-frame'),b=document.getElementById('bia-totem-btn');
         b.addEventListener('click',function(){
@@ -730,8 +729,14 @@
           f.style.display=open?'none':'block';
           b.textContent=open?'Falar com especialista':'Fechar';
         });
+        window.addEventListener('message',function(e){
+          if(e.origin==='https://screenshot-perfect-display-58.lovable.app'&&e.data&&e.data.type==='bia-open-whatsapp'){
+            window.location.href=e.data.url;
+          }
+        });
       })();
     </script>
+
 
     <!-- Blão flutuante promoção -->
     <button class="promo-float" id="promoBanner" type="button" onclick="document.getElementById('bia-totem-btn').click()">
