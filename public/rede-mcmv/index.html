@@ -144,22 +144,24 @@
       }
       @media (max-width: 480px){
         .promo-float{
-          top: 74px;
-          right: 8px;
+          top: 58px;
+          right: 4px;
           left: auto;
           bottom: auto;
-          font-size: 9.5px;
-          padding: 7px 10px;
-          max-width: 135px;
-          border-radius: 10px;
-          line-height: 1.2;
-          box-shadow: 0 5px 14px rgba(255,107,53,.4), 0 0 0 2px rgba(255,255,255,.35), 0 0 12px rgba(255,215,0,.45);
+          font-size: 7px;
+          padding: 4px 6px;
+          max-width: 105px;
+          border-radius: 6px;
+          line-height: 1.1;
+          box-shadow: 0 2px 6px rgba(255,107,53,.3), 0 0 0 1.5px rgba(255,255,255,.3), 0 0 6px rgba(255,215,0,.35);
+          transform: scale(0.82);
+          transform-origin: top right;
           animation: promo-happy-pulse 1.8s ease-in-out infinite, promo-happy-bounce 2.2s ease-in-out infinite, promo-happy-rainbow 4s linear infinite;
         }
-        .promo-float:hover{ transform: scale(1.04) rotate(-1deg); }
-        .promo-float small{ font-size: 8.5px; margin-top: 2px; }
-        .promo-float .emoji{ font-size: 13px; margin-right: 2px; }
-        .promo-float strong{ font-size: 10.5px; }
+        .promo-float:hover{ transform: scale(0.85) rotate(-1deg); }
+        .promo-float small{ display: none; }
+        .promo-float .emoji{ font-size: 10px; margin-right: 1px; }
+        .promo-float strong{ font-size: 8px; }
       }
 
 
@@ -582,7 +584,6 @@
           <div class="mark">MV</div>
           <h1>Rede Minha Casa<br />Minha Vida<span>Programa MCMV</span></h1>
         </div>
-        <button class="cta-top" onclick="openModal('Interesse geral')">Cadastrar meu interesse</button>
       </div>
     </header>
 
