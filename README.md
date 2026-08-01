@@ -1,14 +1,18 @@
-# Welcome to your Lovable project
+# Static Site Deployer
+
+Cola esse texto no chat do Lovable, e junto com ele anexa o index.html e a pasta images/ do zip que te mandei antes (ou arrasta os arquivos ali quando ele pedir). O prompt já deixa claro pra ele não reescrever nada, só colocar como arquivo estático em public/rede-mcmv/ — assim não corre risco de o Lovable "melhorar" e quebrar o que já construímos.
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://redeminhacasaminhavida.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/b9a38d80-fe22-4dd6-9a46-05909611bd69).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +24,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
