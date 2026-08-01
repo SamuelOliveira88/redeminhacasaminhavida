@@ -144,14 +144,22 @@
       }
       @media (max-width: 480px){
         .promo-float{
-          bottom: 88px;
-          left: 12px;
-          font-size: 12px;
-          padding: 13px 16px;
-          max-width: 220px;
+          top: 74px;
+          right: 8px;
+          left: auto;
+          bottom: auto;
+          font-size: 9.5px;
+          padding: 7px 10px;
+          max-width: 135px;
+          border-radius: 10px;
+          line-height: 1.2;
+          box-shadow: 0 5px 14px rgba(255,107,53,.4), 0 0 0 2px rgba(255,255,255,.35), 0 0 12px rgba(255,215,0,.45);
+          animation: promo-happy-pulse 1.8s ease-in-out infinite, promo-happy-bounce 2.2s ease-in-out infinite, promo-happy-rainbow 4s linear infinite;
         }
-        .promo-float small{ font-size: 10px; }
-        .promo-float .emoji{ font-size: 18px; }
+        .promo-float:hover{ transform: scale(1.04) rotate(-1deg); }
+        .promo-float small{ font-size: 8.5px; margin-top: 2px; }
+        .promo-float .emoji{ font-size: 13px; margin-right: 2px; }
+        .promo-float strong{ font-size: 10.5px; }
       }
 
 
