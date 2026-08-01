@@ -714,12 +714,37 @@
       <p style="margin-top:6px;">Programa Minha Casa Minha Vida (MCMV) · Taboão da Serra e São Paulo</p>
     </footer>
 
-    <!-- Totem flutuante BI@ -->
+    <!-- Totem flutuante BI@ (formulário nativo) -->
     <div id="bia-totem" style="position:fixed;bottom:20px;right:20px;z-index:99999;font-family:system-ui,sans-serif">
-      <iframe id="bia-totem-frame" src="https://screenshot-perfect-display-58.lovable.app/receptor?embed=true&origem=totem"
-        sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-        style="display:none;width:min(92vw,380px);height:min(70vh,620px);border:0;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25);background:#fff"
-        title="Cadastro BI@"></iframe>
+      <div id="bia-totem-panel" style="display:none;width:min(92vw,360px);background:#fff;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25);overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;background:#0B1F3B;color:#fff">
+          <strong style="font-size:15px">Fale com um especialista</strong>
+          <button type="button" id="bia-totem-close" aria-label="Fechar" style="border:0;background:transparent;color:#fff;font-size:20px;line-height:1;cursor:pointer">&times;</button>
+        </div>
+        <form id="bia-totem-form" style="padding:16px;display:grid;gap:10px">
+          <p style="margin:0 0 4px;font-size:13px;color:#475569">Preencha seus dados para continuar no WhatsApp.</p>
+          <label style="font-size:12px;color:#334155">Nome completo
+            <input name="nome" required maxlength="100" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
+          </label>
+          <label style="font-size:12px;color:#334155">WhatsApp com DDD
+            <input name="telefone" required maxlength="20" inputmode="tel" placeholder="(11) 90000-0000" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
+          </label>
+          <label style="font-size:12px;color:#334155">E-mail (opcional)
+            <input name="email" type="email" maxlength="255" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
+          </label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <label style="font-size:12px;color:#334155">Entrada
+              <input name="entrada" maxlength="20" inputmode="numeric" placeholder="5.000" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
+            </label>
+            <label style="font-size:12px;color:#334155">Renda bruta
+              <input name="renda" maxlength="20" inputmode="numeric" placeholder="3.500" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
+            </label>
+          </div>
+          <button type="submit" style="margin-top:4px;border:0;cursor:pointer;padding:12px;border-radius:999px;background:#16a34a;color:#fff;font-weight:700;font-size:14px">Enviar cadastro pelo WhatsApp</button>
+          <a id="bia-totem-alt" href="#" target="_blank" rel="noopener noreferrer" style="display:none;text-align:center;font-size:13px;color:#0B1F3B;font-weight:600">Abrir pelo navegador</a>
+          <small style="color:#94a3b8;font-size:11px">Seus dados são usados apenas para este atendimento.</small>
+        </form>
+      </div>
       <button id="bia-totem-btn" type="button"
         style="margin-top:10px;float:right;border:0;cursor:pointer;padding:14px 20px;border-radius:999px;background:#0B1F3B;color:#fff;font-weight:600;box-shadow:0 10px 24px rgba(0,0,0,.25)">
         Falar com especialista
@@ -727,25 +752,41 @@
     </div>
     <script>
       (function(){
-        var f=document.getElementById('bia-totem-frame'),b=document.getElementById('bia-totem-btn');
-        b.addEventListener('click',function(){
-          var open=f.style.display!=='none';
-          f.style.display=open?'none':'block';
-          b.textContent=open?'Falar com especialista':'Fechar';
-        });
-        window.addEventListener('message',function(e){
-          if(e.origin==='https://screenshot-perfect-display-58.lovable.app'&&e.data&&e.data.type==='bia-open-whatsapp'){
-            var a=document.createElement('a');
-            a.href=e.data.url;
-            a.target='_blank';
-            a.rel='noopener noreferrer';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-          }
+        var p=document.getElementById('bia-totem-panel'),
+            b=document.getElementById('bia-totem-btn'),
+            c=document.getElementById('bia-totem-close'),
+            form=document.getElementById('bia-totem-form'),
+            alternativo=document.getElementById('bia-totem-alt');
+        function toggle(force){
+          var open=(typeof force==='boolean')?force:(p.style.display==='none');
+          p.style.display=open?'block':'none';
+          b.textContent=open?'Fechar':'Falar com especialista';
+        }
+        b.addEventListener('click',function(){toggle();});
+        c.addEventListener('click',function(){toggle(false);});
+        form.addEventListener('submit',function(ev){
+          ev.preventDefault();
+          var d=new FormData(form);
+          var nome=(d.get('nome')||'').toString().trim();
+          var telefone=(d.get('telefone')||'').toString().trim();
+          var email=(d.get('email')||'').toString().trim();
+          var entrada=(d.get('entrada')||'').toString().trim();
+          var renda=(d.get('renda')||'').toString().trim();
+          if(!nome||!telefone)return;
+          var linhas=['Olá! Vim pelo site da Rede Minha Casa Minha Vida e quero falar com um especialista:','','Nome: '+nome,'Telefone: '+telefone];
+          if(email)linhas.push('E-mail: '+email);
+          if(entrada)linhas.push('Entrada: R$ '+entrada);
+          if(renda)linhas.push('Renda bruta: R$ '+renda);
+          linhas.push('Origem: totem');
+          var texto=encodeURIComponent(linhas.join('\n'));
+          var web='https://wa.me/5511920036576?text='+texto;
+          alternativo.href=web;
+          alternativo.style.display='block';
+          window.location.href=web;
         });
       })();
     </script>
+
 
 
     <!-- Blão flutuante promoção -->
