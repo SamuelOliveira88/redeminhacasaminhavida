@@ -702,28 +702,15 @@
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal-box">
         <button class="modal-close" onclick="closeModal()">&times;</button>
-        <h3>Quero ser atendido</h3>
+        <h3>Fale com o especialista</h3>
         <p class="modal-sub">
-          Interesse em: <strong id="modalEmpreendimento">Interesse geral</strong>. Preencha e um consultor te chama.
+          Interesse em: <strong id="modalEmpreendimento">Interesse geral</strong>. Toque abaixo para falar com um consultor pelo BI@.
         </p>
-        <form id="leadForm">
-          <div class="field">
-            <label>Nome completo</label>
-            <input type="text" id="fNome" required />
-          </div>
-          <div class="field">
-            <label>WhatsApp</label>
-            <input type="tel" id="fTelefone" placeholder="(11) 90000-0000" required />
-          </div>
-          <div class="field">
-            <label>E-mail (opcional)</label>
-            <input type="email" id="fEmail" />
-          </div>
-          <button class="modal-submit" type="submit">Enviar cadastro</button>
-          <p class="modal-status" id="modalStatus"></p>
-        </form>
+        <button class="modal-submit" type="button" onclick="abrirBIAtotem()">Fale com o especialista</button>
+        <p class="modal-status" id="modalStatus"></p>
       </div>
     </div>
+
 
     <script>
       // ---------- Dados dos empreendimentos ----------
@@ -815,70 +802,14 @@
         document.getElementById('modalEmpreendimento').textContent = nomeEmpreendimento;
         document.getElementById('modalOverlay').classList.add('open');
         document.getElementById('modalStatus').classList.remove('show','ok','err');
-        document.getElementById('leadForm').reset();
       }
       function closeModal(){
         document.getElementById('modalOverlay').classList.remove('open');
       }
-
-      // Webhook de leads do Alexandria (grupo Leads On) — token próprio da landing page.
-      var ALEXANDRIA_TOKEN = "n3zMDfeSec9ZArrkTPuW6rYoAZPLzcLj5gZyEkxQ";
-      var ALEXANDRIA_GRUPO_ID = "10b02e8a-3ae0-40ad-b4d3-fe62396939ee"; // grupo Leads On
-
-      // WhatsApp do consultor que recebe os cadastros
-      var WHATSAPP_DESTINO = "5511920036576";
-      function encaminharWhatsApp(nome, telefone, email, empreendimento){
-        var texto = "Novo cadastro pelo site Rede MCMV%0A%0A"
-          + "Nome: " + nome + "%0A"
-          + "WhatsApp: " + telefone + "%0A"
-          + (email ? "E-mail: " + email + "%0A" : "")
-          + "Interesse: " + empreendimento;
-        window.open("https://wa.me/" + WHATSAPP_DESTINO + "?text=" + encodeURIComponent(decodeURIComponent(texto)), "_blank");
+      function abrirBIAtotem(){
+        closeModal();
+        document.getElementById('bia-totem-btn').click();
       }
-
-      document.getElementById('leadForm').addEventListener('submit', function(ev){
-        ev.preventDefault();
-        var statusEl = document.getElementById('modalStatus');
-        var nome = document.getElementById('fNome').value.trim();
-        var telefoneRaw = document.getElementById('fTelefone').value.trim();
-        var telefoneDigits = telefoneRaw.replace(/\D/g, '');
-        if (telefoneDigits.length > 0 && telefoneDigits.slice(0,2) !== '55') {
-          telefoneDigits = '55' + telefoneDigits;
-        }
-        var email = document.getElementById('fEmail').value.trim();
-        var empreendimento = document.getElementById('modalEmpreendimento').textContent;
-
-        statusEl.textContent = "Enviando...";
-        statusEl.className = "modal-status show";
-
-        var url = "https://alexandrialeads.app/api/public/webhook?token=" + ALEXANDRIA_TOKEN + "&grupo_id=" + ALEXANDRIA_GRUPO_ID;
-
-        fetch(url, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            nome: nome,
-            telefone: telefoneDigits,
-            email: email,
-            grupo_id: ALEXANDRIA_GRUPO_ID,
-            mensagem: "Interesse: " + empreendimento + " (origem: site Rede MCMV)"
-          })
-        }).then(function(resp){
-          if(resp.ok){
-            statusEl.textContent = "Cadastro enviado! Em breve um consultor entra em contato.";
-            statusEl.className = "modal-status show ok";
-            encaminharWhatsApp(nome, telefoneRaw, email, empreendimento);
-            document.getElementById('leadForm').reset();
-          } else {
-            statusEl.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
-            statusEl.className = "modal-status show err";
-          }
-        }).catch(function(err){
-          statusEl.textContent = "Cadastro enviado pelo WhatsApp.";
-          statusEl.className = "modal-status show ok";
-          encaminharWhatsApp(nome, telefoneRaw, email, empreendimento);
-        });
-      });
     </script>
   </body>
 </html>
