@@ -857,6 +857,8 @@
       ];
 
       function cardHTML(e){
+        var zapMsg = 'Olá! Vim pelo site da Rede Minha Casa Minha Vida e tenho interesse no empreendimento: ' + e.nome + '.';
+        var zapHref = 'https://wa.me/5511920036576?text=' + encodeURIComponent(zapMsg);
         var badgeHtml = e.badge ? ('<span class="badge">' + e.badge + '</span>') : '';
         var imgBlock = e.img
           ? '<div class="card-img" style="background-image:url(\'' + e.img + '\')">' + badgeHtml + '</div>'
@@ -872,6 +874,7 @@
               '<div class="card-price">A partir de<br><strong>Sob consulta</strong></div>' +
               '<div class="card-actions">' +
                 '<button class="btn-sm btn-primary" onclick="openModal(\'' + safeName + '\')">Quero saber mais</button>' +
+                '<a class="btn-sm btn-whatsapp" style="display:none" href="' + zapHref + '" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>' +
               '</div>' +
             '</div>' +
           '</div>';
