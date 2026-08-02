@@ -774,7 +774,8 @@
           var entrada=(d.get('entrada')||'').toString().trim();
           var renda=(d.get('renda')||'').toString().trim();
           if(!nome||!telefone)return;
-          var linhas=['Olá! Vim pelo site da Rede Minha Casa Minha Vida e quero falar com um especialista:','','Nome: '+nome,'Telefone: '+telefone];
+          var empInteresse=document.getElementById('modalEmpreendimento').textContent;
+          var linhas=['Olá! Vim pelo site da Rede Minha Casa Minha Vida e quero falar com um especialista:','','Página: Rede Minha Casa Minha Vida','Empreendimento de interesse: '+empInteresse,'','Nome: '+nome,'Telefone: '+telefone];
           if(email)linhas.push('E-mail: '+email);
           if(entrada)linhas.push('Entrada: R$ '+entrada);
           if(renda)linhas.push('Renda bruta: R$ '+renda);
