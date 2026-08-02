@@ -480,6 +480,7 @@
         cursor:pointer;
       }
       .btn-primary{ background: var(--gold); color: var(--deep); }
+      .btn-whatsapp{ background:#16a34a; color:#fff; display:flex; align-items:center; justify-content:center; gap:5px; }
 
       .section-title{
         font-size: 26px;
@@ -773,7 +774,8 @@
           var entrada=(d.get('entrada')||'').toString().trim();
           var renda=(d.get('renda')||'').toString().trim();
           if(!nome||!telefone)return;
-          var linhas=['Olá! Vim pelo site da Rede Minha Casa Minha Vida e quero falar com um especialista:','','Nome: '+nome,'Telefone: '+telefone];
+          var empInteresse=document.getElementById('modalEmpreendimento').textContent;
+          var linhas=['Olá! Vim pelo site da Rede Minha Casa Minha Vida e quero falar com um especialista:','','Página: Rede Minha Casa Minha Vida','Empreendimento de interesse: '+empInteresse,'','Nome: '+nome,'Telefone: '+telefone];
           if(email)linhas.push('E-mail: '+email);
           if(entrada)linhas.push('Entrada: R$ '+entrada);
           if(renda)linhas.push('Renda bruta: R$ '+renda);
@@ -855,6 +857,8 @@
       ];
 
       function cardHTML(e){
+        var zapMsg = 'Olá! Vim pelo site da Rede Minha Casa Minha Vida e tenho interesse no empreendimento: ' + e.nome + '.';
+        var zapHref = 'https://wa.me/5511920036576?text=' + encodeURIComponent(zapMsg);
         var badgeHtml = e.badge ? ('<span class="badge">' + e.badge + '</span>') : '';
         var imgBlock = e.img
           ? '<div class="card-img" style="background-image:url(\'' + e.img + '\')">' + badgeHtml + '</div>'
@@ -870,6 +874,7 @@
               '<div class="card-price">A partir de<br><strong>Sob consulta</strong></div>' +
               '<div class="card-actions">' +
                 '<button class="btn-sm btn-primary" onclick="openModal(\'' + safeName + '\')">Quero saber mais</button>' +
+                '<a class="btn-sm btn-whatsapp" style="display:none" href="' + zapHref + '" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>' +
               '</div>' +
             '</div>' +
           '</div>';
