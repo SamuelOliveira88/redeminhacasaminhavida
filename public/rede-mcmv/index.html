@@ -213,13 +213,13 @@
       }
       .hero-bg{
         position:absolute; inset:0;
-        background-image: url('images/hero_vista_plaza.jpg');
-        background-size: cover;
-        background-position: center 60%;
+        width:100%; height:100%;
+        object-fit: cover;
+        object-position: center 60%;
       }
       .hero-overlay{
         position:absolute; inset:0;
-        background: linear-gradient(90deg, rgba(14,74,58,.95) 0%, rgba(14,74,58,.78) 45%, rgba(14,74,58,.4) 100%);
+        background: linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.15) 100%);
       }
       .hero-content{
         position:relative;
@@ -625,7 +625,9 @@
     </header>
 
     <section class="hero">
-      <div class="hero-bg"></div>
+      <video class="hero-bg" autoplay loop muted playsinline preload="auto" poster="images/hero_vista_plaza.jpg">
+        <source src="/__l5e/assets-v1/d042da91-b9fe-4454-9e11-1b1a55f7c357/sky.mp4" type="video/mp4" />
+      </video>
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <div class="eyebrow sans">Programa Minha Casa Minha Vida</div>
@@ -643,36 +645,6 @@
         <button class="hero-btn" onclick="openModal('Interesse geral')">Quero ser atendido</button>
       </div>
     </section>
-
-    <div class="explainer">
-      <h2>O que é o Minha Casa Minha Vida</h2>
-      <p class="sans">
-        É o programa do Governo Federal que facilita a compra da casa própria para quem tem renda familiar mais baixa —
-        com subsídio, juros menores e documentação mais simples do que num financiamento comum.
-      </p>
-      <div class="explainer-grid">
-        <div class="explainer-card">
-          <div class="ic">1</div>
-          <h3>Subsídio do governo</h3>
-          <p>Parte do valor do imóvel é abatida direto pelo governo, de acordo com a sua faixa de renda.</p>
-        </div>
-        <div class="explainer-card">
-          <div class="ic">2</div>
-          <h3>Use seu FGTS</h3>
-          <p>O saldo do FGTS pode entrar como parte do pagamento, reduzindo o valor financiado.</p>
-        </div>
-        <div class="explainer-card">
-          <div class="ic">3</div>
-          <h3>Escritura grátis</h3>
-          <p>Os empreendimentos da Rede saem com escritura sem custo adicional para você.</p>
-        </div>
-        <div class="explainer-card">
-          <div class="ic">4</div>
-          <h3>Parcelas que cabem no bolso</h3>
-          <p>Taxas reduzidas e parcelas calculadas de acordo com o que você já paga de aluguel hoje.</p>
-        </div>
-      </div>
-    </div>
 
     <div class="tabs-wrap">
       <div class="tabs sans">
@@ -707,6 +679,36 @@
         <div class="grid" id="grid-sp"></div>
       </div>
     </section>
+
+    <div class="explainer">
+      <h2>O que é o Minha Casa Minha Vida</h2>
+      <p class="sans">
+        É o programa do Governo Federal que facilita a compra da casa própria para quem tem renda familiar mais baixa —
+        com subsídio, juros menores e documentação mais simples do que num financiamento comum.
+      </p>
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <div class="ic">1</div>
+          <h3>Subsídio do governo</h3>
+          <p>Parte do valor do imóvel é abatida direto pelo governo, de acordo com a sua faixa de renda.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="ic">2</div>
+          <h3>Use seu FGTS</h3>
+          <p>O saldo do FGTS pode entrar como parte do pagamento, reduzindo o valor financiado.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="ic">3</div>
+          <h3>Escritura grátis</h3>
+          <p>Os empreendimentos da Rede saem com escritura sem custo adicional para você.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="ic">4</div>
+          <h3>Parcelas que cabem no bolso</h3>
+          <p>Taxas reduzidas e parcelas calculadas de acordo com o que você já paga de aluguel hoje.</p>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <p>
