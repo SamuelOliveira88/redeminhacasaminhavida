@@ -607,6 +607,123 @@
       }
       .float-cta:hover{ transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.34); }
 
+      /* GALLERY LIGHTBOX */
+      .gallery-overlay{
+        display:none;
+        position:fixed; inset:0;
+        background: rgba(8,12,10,.92);
+        z-index: 300;
+        align-items:center;
+        justify-content:center;
+        padding: 20px;
+      }
+      .gallery-overlay.open{ display:flex; }
+      .gallery-box{
+        background:#fff;
+        border-radius: 18px;
+        max-width: 1000px;
+        width:100%;
+        max-height: 90vh;
+        display:flex;
+        flex-direction:column;
+        overflow:hidden;
+        position:relative;
+      }
+      .gallery-close{
+        position:absolute;
+        top:12px; right:16px;
+        background: rgba(255,255,255,.9);
+        border:none;
+        width:36px; height:36px;
+        border-radius: 50%;
+        font-size: 22px;
+        color: var(--deep);
+        cursor:pointer;
+        z-index: 5;
+        display:flex; align-items:center; justify-content:center;
+      }
+      .gallery-title{
+        padding: 18px 22px 10px;
+        font-size: 20px;
+        color: var(--deep);
+        border-bottom: 1px solid #e8ece9;
+      }
+      .gallery-main{
+        flex:1;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background: #0b120f;
+        min-height: 320px;
+        position:relative;
+      }
+      .gallery-main img{
+        max-width:100%;
+        max-height: 56vh;
+        object-fit: contain;
+      }
+      .gallery-nav{
+        position:absolute;
+        top:50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,.85);
+        border:none;
+        width:40px; height:40px;
+        border-radius: 50%;
+        font-size: 18px;
+        color: var(--deep);
+        cursor:pointer;
+        display:flex; align-items:center; justify-content:center;
+      }
+      .gallery-nav.prev{ left: 12px; }
+      .gallery-nav.next{ right: 12px; }
+      .gallery-tabs{
+        display:flex;
+        gap: 8px;
+        padding: 12px 16px 0;
+        background: #fff;
+      }
+      .gallery-tab{
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 8px 14px;
+        border: none;
+        background: #e8ece9;
+        color: var(--deep);
+        border-radius: 8px;
+        cursor:pointer;
+      }
+      .gallery-tab.active{ background: var(--deep); color: var(--gold-2); }
+      .gallery-thumbs{
+        display:flex;
+        gap: 8px;
+        padding: 12px 16px 16px;
+        overflow-x:auto;
+        background: #fff;
+      }
+      .gallery-thumb{
+        width: 80px; height: 60px;
+        flex-shrink:0;
+        object-fit:cover;
+        border-radius: 8px;
+        cursor:pointer;
+        border: 2px solid transparent;
+      }
+      .gallery-thumb.active{ border-color: var(--deep); }
+      .gallery-counter{
+        position:absolute;
+        bottom: 14px;
+        left:50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,.55);
+        color:#fff;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        padding: 4px 12px;
+        border-radius: 999px;
+      }
+
       @media (max-width: 640px){
         .float-cta{ right: 12px; bottom: 12px; padding: 12px 18px; font-size: 13px; }
         .hero h2{ font-size: 28px; }
@@ -716,6 +833,22 @@
       </p>
       <p style="margin-top:6px;">Programa Minha Casa Minha Vida (MCMV) · Taboão da Serra e São Paulo</p>
     </footer>
+
+    <!-- GALERIA LIGHTBOX -->
+    <div id="gallery-overlay" class="gallery-overlay" onclick="closeGallery(event)">
+      <div class="gallery-box" onclick="event.stopPropagation()">
+        <button class="gallery-close" aria-label="Fechar" onclick="closeGallery()">&times;</button>
+        <div class="gallery-title" id="gallery-title">Galeria</div>
+        <div class="gallery-main">
+          <button class="gallery-nav prev" onclick="prevImage()">&#10094;</button>
+          <img id="gallery-img" src="" alt="Foto do empreendimento">
+          <button class="gallery-nav next" onclick="nextImage()">&#10095;</button>
+          <div class="gallery-counter" id="gallery-counter">1 / 1</div>
+        </div>
+        <div class="gallery-tabs" id="gallery-tabs"></div>
+        <div class="gallery-thumbs" id="gallery-thumbs"></div>
+      </div>
+    </div>
 
     <!-- Totem flutuante BI@ (formulário nativo) -->
     <div id="bia-totem" style="position:fixed;bottom:20px;right:20px;z-index:99999;font-family:system-ui,sans-serif">
