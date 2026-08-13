@@ -949,56 +949,47 @@
 
     <script>
       // ---------- Dados dos empreendimentos ----------
-      var empreendimentos = [
-        { nome:"Vista Plaza Residencial", regiao:"taboao", loc:"Taboão da Serra", badge:"Lançamento",
-          img:"images/vp_lobby.jpg",
+            var empreendimentos = [
+        { nome:"Vista Plaza Residencial", regiao:"taboao", loc:"Taboão da Serra", badge:"Lançamento", img:"images/vp_lobby.jpg", fotos:["images/vp_lobby.jpg", "images/emp/vista_plaza_foto_01.jpg", "images/emp/vista_plaza_foto_02.jpg", "images/emp/vista_plaza_foto_03.jpg", "images/emp/vista_plaza_foto_04.jpg"], plantas:[],
           desc:"Lazer completo: pizza gourmet, pet place, lounge com wi-fi, lobby decorado. 1 e 2 dorms com vaga." },
-        { nome:"Abiatar Residence Tower", regiao:"taboao", loc:"Jardim da Glória, Taboão da Serra", badge:"285 unidades",
-          img:"images/abiatar.jpg",
+        { nome:"Abiatar Residence Tower", regiao:"taboao", loc:"Jardim da Glória, Taboão da Serra", badge:"285 unidades", img:"images/abiatar.jpg", fotos:["images/abiatar.jpg", "images/emp/abiatar_foto_01.jpg", "images/emp/abiatar_foto_02.jpg", "images/emp/abiatar_foto_03.jpg", "images/emp/abiatar_foto_04.jpg"], plantas:["images/emp/abiatar_planta_01.jpg", "images/emp/abiatar_planta_02.jpg", "images/emp/abiatar_planta_03.jpg", "images/emp/abiatar_planta_04.jpg", "images/emp/abiatar_planta_05.jpg"],
           desc:"2 dorms com vaga. Empreendimento com 285 unidades e ampla área de lazer." },
-        { nome:"Áurea Sky", regiao:"taboao", loc:"Pq. Ind. das Oliveiras, Taboão da Serra", badge:"Lazer premium",
-          img:"images/aureasky.jpg",
+        { nome:"Áurea Sky", regiao:"taboao", loc:"Pq. Ind. das Oliveiras, Taboão da Serra", badge:"Lazer premium", img:"images/aureasky.jpg", fotos:["images/aureasky.jpg", "images/emp/aurea_foto_01.jpg", "images/emp/aurea_foto_02.jpg", "images/emp/aurea_foto_03.jpg", "images/emp/aurea_foto_04.jpg"], plantas:["images/emp/aurea_planta_01.jpg", "images/emp/aurea_planta_02.jpg", "images/emp/aurea_planta_03.jpg", "images/emp/aurea_planta_04.jpg", "images/emp/aurea_planta_05.jpg"],
           desc:"2 dorms (41 e 47 m²) com vaga. Empreendimento moderno, lazer premium e vista privilegiada." },
-        { nome:"Residencial Clube Laguna", regiao:"taboao", loc:"Parque Laguna, Taboão da Serra", badge:"Clube completo",
-          img:"images/laguna.jpg",
+        { nome:"Residencial Clube Laguna", regiao:"taboao", loc:"Parque Laguna, Taboão da Serra", badge:"Clube completo", img:"images/laguna.jpg", fotos:["images/laguna.jpg", "images/emp/laguna_foto_01.jpg", "images/emp/laguna_foto_02.jpg", "images/emp/laguna_foto_03.jpg", "images/emp/laguna_foto_04.jpg"], plantas:["images/emp/laguna_planta_01.jpg", "images/emp/laguna_planta_02.jpg", "images/emp/laguna_planta_03.jpg", "images/emp/laguna_planta_04.jpg", "images/emp/laguna_planta_05.jpg"],
           desc:"1 e 2 dorms (40 e 41 m²) com vaga. Estrutura de clube completa e financiamento facilitado." },
-        { nome:"Villa São Francisco II", regiao:"taboao", loc:"Jardim Três Irmãos, Taboão da Serra", badge:"Perto do Shopping",
-          img:"images/villasf.jpg",
-          desc:"2 dorms (42 m²) com vaga. Próximo ao Shopping Taboão e Parque das Hortênsias."},
-        { nome:"Villa São Francisco (I, III, IV)", regiao:"taboao", loc:"Jardim Três Irmãos, Taboão da Serra", badge:null,
-          img:"images/villasf2.jpg", desc:"Demais fases do Villa São Francisco. Fale com um consultor para disponibilidade atual." },
-        { nome:"Griffe Jasmins Residencial", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:null,
-          img:"images/jasmins1.jpg", desc:"Empreendimento MCMV na região dos Jasmins. Fale com um consultor para plantas e disponibilidade." },
-        { nome:"Griffe Jasmins 2 Residencial", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:"Lazer no rooftop",
-          img:"images/jasmins2.jpg", desc:"Segunda fase do Griffe Jasmins. Fale com um consultor para plantas e disponibilidade." },
-        { nome:"Griffe Kizaemon", regiao:"taboao", loc:"Jardim Iracema, Taboão da Serra", badge:null,
-          img:"images/kizaemon.jpg", desc:"Empreendimento MCMV pronto para morar. Fale com um consultor para disponibilidade." },
-        { nome:"Vista Parque Chácara Joquey", regiao:"taboao", loc:"Taboão da Serra", badge:null,
-          img:"images/joquey.jpg", desc:"Empreendimento MCMV. Fale com um consultor para plantas e disponibilidade." },
-        { nome:"Vista Parque Clube II", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:null,
-          img:"images/vparqueII.jpg", desc:"1 dorm com vaga, com opção garden disponível. Fale com um consultor para disponibilidade." },
-        { nome:"Innovare Aricanduva", regiao:"sp", loc:"Vila Aricanduva, São Paulo", badge:"Primeiro imóvel",
-          img:"images/aricanduva.jpg",
-          desc:"2 dorms (38 m²) com vaga. Excelente para primeiro imóvel com subsídio do governo e uso do FGTS."},
-        { nome:"Up Vila Santa Catarina", regiao:"sp", loc:"Vila Santa Catarina, São Paulo", badge:"Zona Sul",
-          img:"images/santacatarina.jpg",
-          desc:"2 dorms (36 a 37 m²) com vaga. Região valorizada da Zona Sul, perto de comércios e transporte."},
-        { nome:"Residencial Algarve", regiao:"sp", loc:"Rio Pequeno, São Paulo", badge:"Zona Oeste",
-          img:"images/algarve.jpg",
-          desc:"2 dorms em localização estratégica da Zona Oeste, com fácil acesso à USP e Marginais."},
-        { nome:"Innovare Portal do Morumbi", regiao:"sp", loc:"Guilherme Dumon Vilares, São Paulo", badge:null,
-          img:"images/morumbi.jpg", desc:"Empreendimento MCMV em construção na região do Morumbi. Fale com um consultor para disponibilidade." }
-
+        { nome:"Villa São Francisco II", regiao:"taboao", loc:"Jardim Três Irmãos, Taboão da Serra", badge:"Perto do Shopping", img:"images/villasf.jpg", fotos:["images/villasf.jpg"], plantas:[],
+          desc:"2 dorms (42 m²) com vaga. Próximo ao Shopping Taboão e Parque das Hortênsias." },
+        { nome:"Villa São Francisco (I, III, IV)", regiao:"taboao", loc:"Jardim Três Irmãos, Taboão da Serra", badge:null, img:"images/villasf2.jpg", fotos:["images/villasf2.jpg"], plantas:[],
+          desc:"Demais fases do Villa São Francisco. Fale com um consultor para disponibilidade atual." },
+        { nome:"Griffe Jasmins Residencial", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:null, img:"images/jasmins1.jpg", fotos:["images/jasmins1.jpg", "images/emp/jasmins1_foto_01.jpg", "images/emp/jasmins1_foto_02.jpg", "images/emp/jasmins1_foto_03.jpg", "images/emp/jasmins1_foto_04.jpg"], plantas:["images/emp/jasmins1_planta_01.jpg", "images/emp/jasmins1_planta_02.jpg", "images/emp/jasmins1_planta_03.jpg", "images/emp/jasmins1_planta_04.jpg", "images/emp/jasmins1_planta_05.jpg"],
+          desc:"Empreendimento MCMV na região dos Jasmins. Fale com um consultor para plantas e disponibilidade." },
+        { nome:"Griffe Jasmins 2 Residencial", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:"Lazer no rooftop", img:"images/jasmins2.jpg", fotos:["images/jasmins2.jpg", "images/emp/jasmins2_foto_01.jpg", "images/emp/jasmins2_foto_02.jpg", "images/emp/jasmins2_foto_03.jpg", "images/emp/jasmins2_foto_04.jpg"], plantas:["images/emp/jasmins2_planta_01.jpg", "images/emp/jasmins2_planta_02.jpg", "images/emp/jasmins2_planta_03.jpg", "images/emp/jasmins2_planta_04.jpg", "images/emp/jasmins2_planta_05.jpg"],
+          desc:"Segunda fase do Griffe Jasmins. Fale com um consultor para plantas e disponibilidade." },
+        { nome:"Griffe Kizaemon", regiao:"taboao", loc:"Jardim Iracema, Taboão da Serra", badge:null, img:"images/kizaemon.jpg", fotos:["images/kizaemon.jpg", "images/emp/kizaemon_foto_01.jpg", "images/emp/kizaemon_foto_02.jpg", "images/emp/kizaemon_foto_03.jpg", "images/emp/kizaemon_foto_04.jpg"], plantas:["images/emp/kizaemon_planta_01.jpg", "images/emp/kizaemon_planta_02.jpg"],
+          desc:"Empreendimento MCMV pronto para morar. Fale com um consultor para disponibilidade." },
+        { nome:"Vista Parque Chácara Joquey", regiao:"taboao", loc:"Taboão da Serra", badge:null, img:"images/joquey.jpg", fotos:["images/joquey.jpg", "images/emp/joquey_foto_01.jpg", "images/emp/joquey_foto_02.jpg", "images/emp/joquey_foto_03.jpg", "images/emp/joquey_foto_04.jpg"], plantas:["images/emp/joquey_planta_01.jpg", "images/emp/joquey_planta_02.jpg", "images/emp/joquey_planta_03.jpg", "images/emp/joquey_planta_04.jpg", "images/emp/joquey_planta_05.jpg"],
+          desc:"Empreendimento MCMV. Fale com um consultor para plantas e disponibilidade." },
+        { nome:"Vista Parque Clube II", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:null, img:"images/vparqueII.jpg", fotos:["images/vparqueII.jpg"], plantas:[],
+          desc:"1 dorm com vaga, com opção garden disponível. Fale com um consultor para disponibilidade." },
+        { nome:"Innovare Aricanduva", regiao:"sp", loc:"Vila Aricanduva, São Paulo", badge:"Primeiro imóvel", img:"images/aricanduva.jpg", fotos:["images/aricanduva.jpg", "images/emp/aricanduva_foto_01.jpg", "images/emp/aricanduva_foto_02.jpg", "images/emp/aricanduva_foto_03.jpg", "images/emp/aricanduva_foto_04.jpg"], plantas:["images/emp/aricanduva_planta_01.jpg", "images/emp/aricanduva_planta_02.jpg", "images/emp/aricanduva_planta_03.jpg", "images/emp/aricanduva_planta_04.jpg", "images/emp/aricanduva_planta_05.jpg"],
+          desc:"2 dorms (38 m²) com vaga. Excelente para primeiro imóvel com subsídio do governo e uso do FGTS." },
+        { nome:"Up Vila Santa Catarina", regiao:"sp", loc:"Vila Santa Catarina, São Paulo", badge:"Zona Sul", img:"images/santacatarina.jpg", fotos:["images/santacatarina.jpg", "images/emp/santa_catarina_foto_01.jpg", "images/emp/santa_catarina_foto_02.jpg", "images/emp/santa_catarina_foto_03.jpg", "images/emp/santa_catarina_foto_04.jpg"], plantas:["images/emp/santa_catarina_planta_01.jpg", "images/emp/santa_catarina_planta_02.jpg", "images/emp/santa_catarina_planta_03.jpg", "images/emp/santa_catarina_planta_04.jpg", "images/emp/santa_catarina_planta_05.jpg"],
+          desc:"2 dorms (36 a 37 m²) com vaga. Região valorizada da Zona Sul, perto de comércios e transporte." },
+        { nome:"Residencial Algarve", regiao:"sp", loc:"Rio Pequeno, São Paulo", badge:"Zona Oeste", img:"images/algarve.jpg", fotos:["images/algarve.jpg", "images/emp/algarve_foto_01.jpg", "images/emp/algarve_foto_02.jpg", "images/emp/algarve_foto_03.jpg", "images/emp/algarve_foto_04.jpg"], plantas:["images/emp/algarve_planta_01.jpg", "images/emp/algarve_planta_02.jpg", "images/emp/algarve_planta_03.jpg", "images/emp/algarve_planta_04.jpg", "images/emp/algarve_planta_05.jpg"],
+          desc:"2 dorms em localização estratégica da Zona Oeste, com fácil acesso à USP e Marginais." },
+        { nome:"Innovare Portal do Morumbi", regiao:"sp", loc:"Guilherme Dumon Vilares, São Paulo", badge:null, img:"images/morumbi.jpg", fotos:["images/morumbi.jpg"], plantas:[],
+          desc:"Empreendimento MCMV em construção na região do Morumbi. Fale com um consultor para disponibilidade." },
       ];
 
       function cardHTML(e){
         var zapMsg = 'Olá! Vim pelo site da Rede Minha Casa Minha Vida e tenho interesse no empreendimento: ' + e.nome + '.';
         var zapHref = 'https://wa.me/5511920036576?text=' + encodeURIComponent(zapMsg);
         var badgeHtml = e.badge ? ('<span class="badge">' + e.badge + '</span>') : '';
-        var imgBlock = e.img
-          ? '<div class="card-img" style="background-image:url(\'' + e.img + '\')">' + badgeHtml + '</div>'
-          : '<div class="card-img placeholder"><span class="ph-label">Book em atualização</span></div>';
         var safeName = e.nome.replace(/'/g, "\\'");
+        var imgBlock = e.img
+          ? '<div class="card-img" style="background-image:url(\'' + e.img + '\');cursor:pointer;" onclick="openGallery(\'' + safeName + '\')" title="Clique para ver fotos">' + badgeHtml + '<span class="gallery-hint">📷 Ver fotos</span></div>'
+          : '<div class="card-img placeholder"><span class="ph-label">Book em atualização</span></div>';
         return '' +
           '<div class="card">' +
             imgBlock +
@@ -1014,7 +1005,6 @@
             '</div>' +
           '</div>';
       }
-
       var gridGeral = document.getElementById('grid-geral');
       var gridTaboao = document.getElementById('grid-taboao');
       var gridSp = document.getElementById('grid-sp');
@@ -1044,6 +1034,73 @@
       function closeModal(){
         document.getElementById('modalOverlay').classList.remove('open');
       }
+
+      // ---------- Gallery lightbox ----------
+      var galleryState = { nome: '', fotos: [], plantas: [], currentTab: 'fotos', idx: 0 };
+      function getGalleryList(){ return galleryState.currentTab === 'plantas' ? galleryState.plantas : galleryState.fotos; }
+      function openGallery(nome){
+        var e = empreendimentos.find(function(x){ return x.nome === nome; });
+        if(!e) return;
+        galleryState = { nome: nome, fotos: e.fotos || [], plantas: e.plantas || [], currentTab: 'fotos', idx: 0 };
+        document.getElementById('gallery-title').textContent = nome;
+        document.getElementById('gallery-overlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        renderGalleryTabs();
+        renderGallery();
+      }
+      function closeGallery(ev){
+        if(ev && ev.target !== document.getElementById('gallery-overlay')) return;
+        document.getElementById('gallery-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      function renderGalleryTabs(){
+        var tabs = document.getElementById('gallery-tabs');
+        var html = '';
+        if(galleryState.fotos.length) html += '<button class="gallery-tab ' + (galleryState.currentTab === 'fotos' ? 'active' : '') + '" onclick="switchGalleryTab(\'fotos\')">Fotos (' + galleryState.fotos.length + ')</button>';
+        if(galleryState.plantas.length) html += '<button class="gallery-tab ' + (galleryState.currentTab === 'plantas' ? 'active' : '') + '" onclick="switchGalleryTab(\'plantas\')">Plantas (' + galleryState.plantas.length + ')</button>';
+        tabs.innerHTML = html;
+      }
+      function switchGalleryTab(tab){
+        galleryState.currentTab = tab;
+        galleryState.idx = 0;
+        renderGalleryTabs();
+        renderGallery();
+      }
+      function renderGallery(){
+        var list = getGalleryList();
+        var img = document.getElementById('gallery-img');
+        if(!list.length){ img.src = ''; img.alt = 'Sem imagens'; return; }
+        img.src = list[galleryState.idx];
+        img.alt = galleryState.nome + ' - ' + (galleryState.currentTab === 'plantas' ? 'planta' : 'foto') + ' ' + (galleryState.idx + 1);
+        document.getElementById('gallery-counter').textContent = (galleryState.idx + 1) + ' / ' + list.length;
+        var thumbs = document.getElementById('gallery-thumbs');
+        thumbs.innerHTML = list.map(function(src, i){
+          return '<img class="gallery-thumb ' + (i === galleryState.idx ? 'active' : '') + '" src="' + src + '" onclick="goToImage(' + i + ')">';
+        }).join('');
+      }
+      function nextImage(){
+        var list = getGalleryList();
+        if(!list.length) return;
+        galleryState.idx = (galleryState.idx + 1) % list.length;
+        renderGallery();
+      }
+      function prevImage(){
+        var list = getGalleryList();
+        if(!list.length) return;
+        galleryState.idx = (galleryState.idx - 1 + list.length) % list.length;
+        renderGallery();
+      }
+      function goToImage(i){
+        galleryState.idx = i;
+        renderGallery();
+      }
+      document.addEventListener('keydown', function(ev){
+        if(!document.getElementById('gallery-overlay').classList.contains('open')) return;
+        if(ev.key === 'Escape') closeGallery();
+        if(ev.key === 'ArrowRight') nextImage();
+        if(ev.key === 'ArrowLeft') prevImage();
+      });
+
       function abrirBIAtotem(){
         closeModal();
         document.getElementById('bia-totem-btn').click();
