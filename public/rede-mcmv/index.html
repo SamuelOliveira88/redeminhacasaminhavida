@@ -951,8 +951,14 @@
       }
 
       // ---------- Modal / cadastro de interesse ----------
+      var whatsappNumero='5511973811001';
+      function montarWhatsAppHref(empreendimento){
+        var msg='Olá! Vim pelo site da Rede Minha Casa Minha Vida e tenho interesse em: ' + empreendimento + '.';
+        return 'https://wa.me/' + whatsappNumero + '?text=' + encodeURIComponent(msg);
+      }
       function openModal(nomeEmpreendimento){
         document.getElementById('modalEmpreendimento').textContent = nomeEmpreendimento;
+        document.getElementById('modalWhatsApp').href = montarWhatsAppHref(nomeEmpreendimento);
         document.getElementById('modalOverlay').classList.add('open');
         document.getElementById('modalStatus').classList.remove('show','ok','err');
       }
