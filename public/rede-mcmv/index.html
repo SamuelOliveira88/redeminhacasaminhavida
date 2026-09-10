@@ -166,41 +166,31 @@
         .promo-float strong{ font-size: 10px; margin-top: 1px; }
       }
 
-      /* TOTEM BI@ - same right metric as promo banner */
-      .bia-totem-wrap{
+      /* BOTÃO FLUTUANTE WHATSAPP */
+      .whatsapp-float{
         position: fixed;
-        top: auto;
-        right: 22px;
+        right: 20px;
         bottom: 20px;
-        left: auto;
         z-index: 99999;
-        font-family: system-ui, sans-serif;
-      }
-
-
-      .bia-totem-wrap iframe{ display: none; }
-      .bia-totem-wrap button{
-        float: right;
-        border: 0;
-        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #25D366;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: 14px;
         padding: 14px 20px;
         border-radius: 999px;
-        background: #0B1F3B;
-        color: #fff;
-        font-weight: 600;
+        text-decoration: none;
         box-shadow: 0 10px 24px rgba(0,0,0,.25);
-        margin-top: 0;
+        transition: transform .15s ease, box-shadow .15s ease;
       }
+      .whatsapp-float:hover{ transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.34); }
       @media (max-width: 480px){
-        .bia-totem-wrap{
-          top: auto;
-          bottom: 20px;
-          right: 20px;
-        }
+        .whatsapp-float{ right: 12px; bottom: 12px; padding: 12px 16px; font-size: 13px; }
+        .whatsapp-float svg{ width: 22px; height: 22px; }
       }
-
-
-
 
       /* HERO */
       .hero{
@@ -603,27 +593,6 @@
       .modal-status.ok{ color: var(--deep); font-weight:700; }
       .modal-status.err{ color: #b23b3b; }
 
-      .float-cta{
-        position: fixed;
-        right: 18px;
-        bottom: 18px;
-        z-index: 999;
-        border: none;
-        cursor: pointer;
-        border-radius: 999px;
-        padding: 14px 22px;
-        font-family: Arial, sans-serif;
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: .04em;
-        text-transform: uppercase;
-        color: #fff;
-        background: #25D366;
-        box-shadow: 0 10px 26px rgba(0,0,0,.28);
-        transition: transform .2s ease, box-shadow .2s ease;
-      }
-      .float-cta:hover{ transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.34); }
-
       /* GALLERY LIGHTBOX */
       .gallery-overlay{
         display:none;
@@ -867,86 +836,25 @@
       </div>
     </div>
 
-    <!-- Totem flutuante BI@ (formulário nativo) -->
-    <div id="bia-totem" style="position:fixed;bottom:20px;right:20px;z-index:99999;font-family:system-ui,sans-serif">
-      <div id="bia-totem-panel" style="display:none;width:min(92vw,360px);background:#fff;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.25);overflow:hidden">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;background:#0B1F3B;color:#fff">
-          <strong style="font-size:15px">Fale com um especialista</strong>
-          <button type="button" id="bia-totem-close" aria-label="Fechar" style="border:0;background:transparent;color:#fff;font-size:20px;line-height:1;cursor:pointer">&times;</button>
-        </div>
-        <form id="bia-totem-form" style="padding:16px;display:grid;gap:10px">
-          <p style="margin:0 0 4px;font-size:13px;color:#475569">Preencha seus dados para continuar no WhatsApp.</p>
-          <label style="font-size:12px;color:#334155">Nome completo
-            <input name="nome" required maxlength="100" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
-          </label>
-          <label style="font-size:12px;color:#334155">WhatsApp com DDD
-            <input name="telefone" required maxlength="20" inputmode="tel" placeholder="(11) 90000-0000" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
-          </label>
-          <label style="font-size:12px;color:#334155">E-mail (opcional)
-            <input name="email" type="email" maxlength="255" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
-          </label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <label style="font-size:12px;color:#334155">Entrada
-              <input name="entrada" maxlength="20" inputmode="numeric" placeholder="5.000" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
-            </label>
-            <label style="font-size:12px;color:#334155">Renda bruta
-              <input name="renda" maxlength="20" inputmode="numeric" placeholder="3.500" style="width:100%;margin-top:4px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px">
-            </label>
-          </div>
-          <button type="submit" style="margin-top:4px;border:0;cursor:pointer;padding:12px;border-radius:999px;background:#16a34a;color:#fff;font-weight:700;font-size:14px">Enviar cadastro pelo WhatsApp</button>
-          <a id="bia-totem-alt" href="#" target="_blank" rel="noopener noreferrer" style="display:none;text-align:center;font-size:13px;color:#0B1F3B;font-weight:600">Abrir pelo navegador</a>
-          <small style="color:#94a3b8;font-size:11px">Seus dados são usados apenas para este atendimento.</small>
-        </form>
-      </div>
-      <button id="bia-totem-btn" type="button"
-        style="margin-top:10px;float:right;border:0;cursor:pointer;padding:14px 20px;border-radius:999px;background:#0B1F3B;color:#fff;font-weight:600;box-shadow:0 10px 24px rgba(0,0,0,.25)">
-        Falar com especialista
-      </button>
-    </div>
+    <!-- Botão flutuante WhatsApp -->
+    <a id="whatsapp-float" class="whatsapp-float" href="#" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp
+    </a>
     <script>
       (function(){
-        var p=document.getElementById('bia-totem-panel'),
-            b=document.getElementById('bia-totem-btn'),
-            c=document.getElementById('bia-totem-close'),
-            form=document.getElementById('bia-totem-form'),
-            alternativo=document.getElementById('bia-totem-alt');
-        function toggle(force){
-          var open=(typeof force==='boolean')?force:(p.style.display==='none');
-          p.style.display=open?'block':'none';
-          b.textContent=open?'Fechar':'Falar com especialista';
-        }
-        b.addEventListener('click',function(){toggle();});
-        c.addEventListener('click',function(){toggle(false);});
-        form.addEventListener('submit',function(ev){
-          ev.preventDefault();
-          var d=new FormData(form);
-          var nome=(d.get('nome')||'').toString().trim();
-          var telefone=(d.get('telefone')||'').toString().trim();
-          var email=(d.get('email')||'').toString().trim();
-          var entrada=(d.get('entrada')||'').toString().trim();
-          var renda=(d.get('renda')||'').toString().trim();
-          if(!nome||!telefone)return;
-          var empInteresse=document.getElementById('modalEmpreendimento').textContent;
-          var linhas=['Olá! Vim pelo site da Rede Minha Casa Minha Vida e quero falar com um especialista:','','Página: Rede Minha Casa Minha Vida','Empreendimento de interesse: '+empInteresse,'','Nome: '+nome,'Telefone: '+telefone];
-          if(email)linhas.push('E-mail: '+email);
-          if(entrada)linhas.push('Entrada: R$ '+entrada);
-          if(renda)linhas.push('Renda bruta: R$ '+renda);
-          linhas.push('Origem: totem');
-          var texto=encodeURIComponent(linhas.join('\n'));
-          var web='https://web.whatsapp.com/send?phone=5511973811001&text='+texto;
-          alternativo.href=web;
-          alternativo.style.display='block';
-          window.open(web, '_blank', 'noopener,noreferrer');
-        });
+        var numero='5511973811001';
+        var mensagem='Olá! Vim pelo site da Rede Minha Casa Minha Vida e quero falar com um especialista.';
+        document.getElementById('whatsapp-float').href='https://wa.me/'+numero+'?text='+encodeURIComponent(mensagem);
       })();
     </script>
 
 
 
     <!-- Blão flutuante promoção -->
-    <button class="promo-float" id="promoBanner" type="button" onclick="document.getElementById('bia-totem-btn').click()">
+    <a class="promo-float" id="promoBanner" href="https://wa.me/5511973811001?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Rede%20Minha%20Casa%20Minha%20Vida%20e%20quero%20saber%20mais%20sobre%20as%20parcelas%20durante%20obra%20a%20partir%20de%20R%24%20800,00." target="_blank" rel="noopener noreferrer">
       <span class="emoji">🎉</span> PARCELAS OBRA<br><strong>R$ 800,00</strong>
-    </button>
+    </a>
 
 
 
@@ -956,9 +864,9 @@
         <button class="modal-close" onclick="closeModal()">&times;</button>
         <h3>Fale com o especialista</h3>
         <p class="modal-sub">
-          Interesse em: <strong id="modalEmpreendimento">Interesse geral</strong>. Toque abaixo para falar com um consultor pelo BI@.
+          Interesse em: <strong id="modalEmpreendimento">Interesse geral</strong>. Toque abaixo para falar com um consultor pelo WhatsApp.
         </p>
-        <button class="modal-submit" type="button" onclick="abrirBIAtotem()">Fale com o especialista</button>
+        <a id="modalWhatsApp" class="modal-submit" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-align:center;text-decoration:none">Falar no WhatsApp</a>
         <p class="modal-status" id="modalStatus"></p>
       </div>
     </div>
@@ -1043,8 +951,14 @@
       }
 
       // ---------- Modal / cadastro de interesse ----------
+      var whatsappNumero='5511973811001';
+      function montarWhatsAppHref(empreendimento){
+        var msg='Olá! Vim pelo site da Rede Minha Casa Minha Vida e tenho interesse em: ' + empreendimento + '.';
+        return 'https://wa.me/' + whatsappNumero + '?text=' + encodeURIComponent(msg);
+      }
       function openModal(nomeEmpreendimento){
         document.getElementById('modalEmpreendimento').textContent = nomeEmpreendimento;
+        document.getElementById('modalWhatsApp').href = montarWhatsAppHref(nomeEmpreendimento);
         document.getElementById('modalOverlay').classList.add('open');
         document.getElementById('modalStatus').classList.remove('show','ok','err');
       }
@@ -1118,10 +1032,6 @@
         if(ev.key === 'ArrowLeft') prevImage();
       });
 
-      function abrirBIAtotem(){
-        closeModal();
-        document.getElementById('bia-totem-btn').click();
-      }
     </script>
   </body>
 </html>
