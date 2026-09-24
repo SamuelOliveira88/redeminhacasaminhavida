@@ -380,6 +380,11 @@
         flex-direction:column;
         transition: transform .2s ease, box-shadow .2s ease;
       }
+      .card.destaque{
+        border: 2px solid var(--gold);
+        box-shadow: 0 10px 28px rgba(242,169,59,.28);
+      }
+      .card.destaque .badge{ background: var(--gold); color: var(--deep); font-weight:700; }
       .card:hover{
         transform: translateY(-4px);
         box-shadow: 0 14px 30px rgba(14,74,58,.16);
@@ -874,7 +879,9 @@
 
     <script>
       // ---------- Dados dos empreendimentos ----------
-            var empreendimentos = [
+      var empreendimentos = [
+        { nome:"Abiatar Conecta Capão Redondo", regiao:"sp", destaque:true, loc:"Capão Redondo, São Paulo", badge:"Destaque", img:"images/emp/abiatar_conecta_foto_01.jpg", fotos:["images/emp/abiatar_conecta_foto_01.jpg", "images/emp/abiatar_conecta_foto_02.jpg", "images/emp/abiatar_conecta_foto_03.jpg", "images/emp/abiatar_conecta_foto_04.jpg", "images/emp/abiatar_conecta_foto_05.jpg"], plantas:[],
+          desc:"Seu ponto de conexão com o melhor da região: piscina, deck solarium, praças, boulevard de lazer, academia, quadra, coworking e muito mais. Fale com um consultor." },
         { nome:"Vista Plaza Residencial", regiao:"taboao", loc:"Taboão da Serra", badge:"Lançamento", img:"images/vp_lobby.jpg", fotos:["images/vp_lobby.jpg", "images/emp/vista_plaza_foto_01.jpg", "images/emp/vista_plaza_foto_02.jpg", "images/emp/vista_plaza_foto_03.jpg", "images/emp/vista_plaza_foto_04.jpg"], plantas:[],
           desc:"Lazer completo: pizza gourmet, pet place, lounge com wi-fi, lobby decorado. 1 e 2 dorms com vaga." },
         { nome:"Abiatar Residence Tower", regiao:"taboao", loc:"Jardim da Glória, Taboão da Serra", badge:"285 unidades", img:"images/abiatar.jpg", fotos:["images/abiatar.jpg", "images/emp/abiatar_foto_01.jpg", "images/emp/abiatar_foto_02.jpg", "images/emp/abiatar_foto_03.jpg", "images/emp/abiatar_foto_04.jpg"], plantas:["images/emp/abiatar_planta_01.jpg"],
@@ -916,7 +923,7 @@
           ? '<div class="card-img" style="background-image:url(\'' + e.img + '\');cursor:pointer;" onclick="openGallery(\'' + safeName + '\')" title="Clique para ver fotos">' + badgeHtml + '<span class="gallery-hint">📷 Ver fotos</span></div>'
           : '<div class="card-img placeholder"><span class="ph-label">Book em atualização</span></div>';
         return '' +
-          '<div class="card">' +
+          '<div class="card' + (e.destaque ? ' destaque' : '') + '">' +
             imgBlock +
             '<div class="card-body">' +
               '<h3>' + e.nome + '</h3>' +
