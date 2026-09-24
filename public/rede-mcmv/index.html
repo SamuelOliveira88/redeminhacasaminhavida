@@ -923,7 +923,7 @@
           ? '<div class="card-img" style="background-image:url(\'' + e.img + '\');cursor:pointer;" onclick="openGallery(\'' + safeName + '\')" title="Clique para ver fotos">' + badgeHtml + '<span class="gallery-hint">📷 Ver fotos</span></div>'
           : '<div class="card-img placeholder"><span class="ph-label">Book em atualização</span></div>';
         return '' +
-          '<div class="card">' +
+          '<div class="card' + (e.destaque ? ' destaque' : '') + '">' +
             imgBlock +
             '<div class="card-body">' +
               '<h3>' + e.nome + '</h3>' +
