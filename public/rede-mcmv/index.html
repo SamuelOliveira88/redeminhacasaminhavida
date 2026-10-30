@@ -493,6 +493,11 @@
       }
       .btn-primary{ background: var(--gold); color: var(--deep); }
       .btn-whatsapp{ background:#16a34a; color:#fff; display:flex; align-items:center; justify-content:center; gap:5px; }
+      .btn-ghost{ background:transparent; color: var(--deep); }
+      .card-thumbs{ display:none; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0 4px; }
+      .card.show-thumbs .card-thumbs{ display:grid; }
+      .thumb{ position:relative; aspect-ratio:4/3; border-radius:8px; background-size:cover; background-position:center; cursor:pointer; border:1px solid rgba(0,0,0,.08); }
+      .thumb span{ position:absolute; left:6px; bottom:6px; background:rgba(15,40,30,.85); color:#fff; font:700 10.5px Arial,sans-serif; padding:3px 8px; border-radius:999px; }
 
       .section-title{
         font-size: 26px;
@@ -914,6 +919,23 @@
           desc:"Empreendimento MCMV em construção na região do Morumbi. Fale com um consultor para disponibilidade." },
       ];
 
+      function thumbsHTML(e, safeName){
+        var f = e.fotos || [], p = (e.plantas || []).slice(0,1), h = '';
+        for (var i = 0; i < f.length && i < 5; i++) h += '<div class="thumb" style="background-image:url(\'' + f[i] + '\')" onclick="openGalleryAt(\'' + safeName + '\',\'fotos\',' + i + ')"><span>Foto ' + (i+1) + '</span></div>';
+        if (p.length) h += '<div class="thumb" style="background-image:url(\'' + p[0] + '\')" onclick="openGalleryAt(\'' + safeName + '\',\'plantas\',0)"><span>Planta</span></div>';
+        return h ? '<div class="card-thumbs">' + h + '</div>' : '';
+      }
+      function toggleThumbs(btn){
+        var card = btn.closest('.card');
+        var open = card.classList.toggle('show-thumbs');
+        btn.textContent = open ? 'Ocultar fotos' : 'Ver fotos';
+      }
+      function openGalleryAt(nome, tab, idx){
+        openGallery(nome);
+        galleryState.currentTab = tab; galleryState.idx = idx;
+        renderGalleryTabs(); renderGallery();
+      }
+
       function cardHTML(e){
         var zapMsg = 'Olá! Vim pelo site da Rede Minha Casa Minha Vida e tenho interesse no empreendimento: ' + e.nome + '.';
         var zapHref = 'https://wa.me/5511973811001?text=' + encodeURIComponent(zapMsg);
@@ -928,12 +950,14 @@
             '<div class="card-body">' +
               '<h3>' + e.nome + '</h3>' +
               '<div class="card-loc">' + e.loc + '</div>' +
+              thumbsHTML(e, safeName) +
               '<p class="card-desc">' + e.desc + '</p>' +
               '<div class="card-price">A partir de<br><strong>Sob consulta</strong></div>' +
               '<div class="card-actions">' +
                 '<button class="btn-sm btn-primary" onclick="openModal(\'' + safeName + '\')">Quero saber mais</button>' +
-                '<a class="btn-sm btn-whatsapp" href="' + zapHref + '" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>' +
+                ((e.fotos && e.fotos.length) || (e.plantas && e.plantas.length) ? '<button class="btn-sm btn-ghost" onclick="toggleThumbs(this)">Ver fotos</button>' : '') +
               '</div>' +
+              '<a class="btn-sm btn-whatsapp" style="margin-top:8px" href="' + zapHref + '" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>' +
             '</div>' +
           '</div>';
       }
