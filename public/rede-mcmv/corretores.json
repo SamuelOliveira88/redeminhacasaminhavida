@@ -4,6 +4,21 @@
       "nome": "Central de Atendimento",
       "slug": "central",
       "telefone": "5511973811001"
+    },
+    {
+      "nome": "Paula",
+      "slug": "paula",
+      "telefone": "5511939518866"
+    },
+    {
+      "nome": "Cris",
+      "slug": "cris",
+      "telefone": "5511913249219"
+    },
+    {
+      "nome": "Ale",
+      "slug": "ale",
+      "telefone": "5511948052906"
     }
   ]
 }
