@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Central de Atendimento | Rede Minha Casa Minha Vida</title>
+    <meta name="description" content="Empreendimentos do programa Minha Casa Minha Vida com atendimento de Central de Atendimento. Fale direto pelo WhatsApp (11) 97381-1001." />
+    <meta property="og:title" content="Central de Atendimento | Rede Minha Casa Minha Vida" />
+    <meta property="og:description" content="Empreendimentos do programa Minha Casa Minha Vida com atendimento de Central de Atendimento. Fale direto pelo WhatsApp (11) 97381-1001." />
+    <meta name="robots" content="noindex, follow" />
+    <style>
+      :root{
+        --deep: #0e4a3a;
+        --deep-2: #145a46;
+        --gold: #f2a93b;
+        --gold-2: #f7c46c;
+        --bg: #f5f7f2;
+        --ink: #182420;
+        --muted: #6f7d76;
+      }
+      *{box-sizing:border-box; margin:0; padding:0;}
+      html{scroll-behavior:smooth;}
+      body{
+        font-family: 'Georgia', 'Times New Roman', serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      .sans{font-family: Arial, Helvetica, sans-serif;}
+
+      /* HEADER */
+      header{
+        background: linear-gradient(180deg, var(--deep) 0%, var(--deep-2) 100%);
+        color: white;
+        padding: 18px 20px;
+        position: sticky;
+        top:0;
+        z-index: 50;
+        box-shadow: 0 2px 12px rgba(0,0,0,.2);
+      }
+      .header-inner{
+        max-width: 1180px;
+        margin: 0 auto;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .brand{
+        display:flex;
+        align-items:center;
+        gap: 10px;
+      }
+      .brand .mark{
+        width: 40px; height:40px;
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        display:flex; align-items:center; justify-content:center;
+        font-weight:bold; color: var(--gold);
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+      }
+      .brand h1{
+        font-size: 18px;
+        letter-spacing: .5px;
+        line-height:1.15;
+      }
+      .brand span{
+        display:block;
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        color: var(--gold-2);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .cta-top{
+        background: var(--gold);
+        color: var(--deep);
+        font-family: Arial, sans-serif;
+        font-weight:700;
+        font-size: 13px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        text-decoration:none;
+        letter-spacing:.3px;
+        white-space:nowrap;
+        border:none;
+        cursor:pointer;
+      }
+
+      /* FLOATING PROMO BANNER - HAPPY VIBE */
+      .promo-float{
+        position: fixed;
+        top: 16px;
+        right: 22px;
+        left: auto;
+        bottom: auto;
+        z-index: 99998;
+
+        background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffd23f 50%, #f7931e 75%, #ff6b35 100%);
+        background-size: 300% 300%;
+        color: #4a1500;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 1.25;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        padding: 16px 20px;
+        border-radius: 999px;
+        box-shadow: 0 12px 32px rgba(255,107,53,.55), 0 0 0 4px rgba(255,255,255,.5), 0 0 24px rgba(255,215,0,.6);
+        cursor: pointer;
+        max-width: min(90vw, 280px);
+        animation: promo-happy-pulse 1.8s ease-in-out infinite, promo-happy-bounce 2.2s ease-in-out infinite, promo-happy-rainbow 4s linear infinite;
+        transition: transform .15s ease;
+      }
+      .promo-float:hover{ transform: scale(1.06) rotate(-2deg); }
+      .promo-float .emoji{
+        display: inline-block;
+        font-size: 20px;
+        margin-right: 4px;
+        animation: emoji-wiggle 1.2s ease-in-out infinite;
+      }
+      .promo-float strong{
+        display: block;
+        font-size: 20px;
+        color: #4a1500;
+        margin-top: 2px;
+      }
+      @keyframes promo-happy-pulse{
+        0%, 100% { box-shadow: 0 12px 32px rgba(255,107,53,.55), 0 0 0 4px rgba(255,255,255,.5), 0 0 24px rgba(255,215,0,.6); }
+        50% { box-shadow: 0 18px 44px rgba(255,107,53,.75), 0 0 0 7px rgba(255,255,255,.7), 0 0 40px rgba(255,215,0,.9); }
+      }
+      @keyframes promo-happy-bounce{
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        25% { transform: translateY(-10px) rotate(1.5deg); }
+        50% { transform: translateY(-4px) rotate(-1deg); }
+        75% { transform: translateY(-12px) rotate(1deg); }
+      }
+      @keyframes promo-happy-rainbow{
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      @keyframes emoji-wiggle{
+        0%, 100% { transform: rotate(-10deg); }
+        50% { transform: rotate(10deg); }
+      }
+      @media (max-width: 480px){
+        .promo-float{
+          top: 44px;
+          right: 4px;
+          left: auto;
+          bottom: auto;
+          font-size: 7px;
+          padding: 4px 6px;
+          max-width: 105px;
+          border-radius: 6px;
+          line-height: 1.1;
+          box-shadow: 0 2px 6px rgba(255,107,53,.3), 0 0 0 1.5px rgba(255,255,255,.3), 0 0 6px rgba(255,215,0,.35);
+          transform: scale(0.82);
+          transform-origin: top right;
+          animation: promo-happy-pulse 1.8s ease-in-out infinite, promo-happy-bounce 2.2s ease-in-out infinite, promo-happy-rainbow 4s linear infinite;
+        }
+
+        .promo-float:hover{ transform: scale(0.85) rotate(-1deg); }
+        .promo-float small{ display: none; }
+        .promo-float .emoji{ font-size: 10px; margin-right: 1px; }
+        .promo-float strong{ font-size: 10px; margin-top: 1px; }
+      }
+
+      /* BOTÃO FLUTUANTE WHATSAPP */
+      .whatsapp-float{
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 99999;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #25D366;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 14px 20px;
+        border-radius: 999px;
+        text-decoration: none;
+        box-shadow: 0 10px 24px rgba(0,0,0,.25);
+        transition: transform .15s ease, box-shadow .15s ease;
+      }
+      .whatsapp-float:hover{ transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.34); }
+      @media (max-width: 480px){
+        .whatsapp-float{ right: 12px; bottom: 12px; padding: 12px 16px; font-size: 13px; }
+        .whatsapp-float svg{ width: 22px; height: 22px; }
+      }
+
+      /* HERO */
+      .hero{
+        position:relative;
+        min-height: 58vh;
+        display:flex;
+        align-items:center;
+        color:white;
+        overflow:hidden;
+      }
+      .hero-bg{
+        position:absolute; inset:0;
+        width:100%; height:100%;
+        object-fit: cover;
+        object-position: center 60%;
+      }
+      .hero-overlay{
+        position:absolute; inset:0;
+        background: linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.15) 100%);
+      }
+      .hero-content{
+        position:relative;
+        z-index:2;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 56px 24px;
+      }
+      .eyebrow{
+        font-family: Arial, sans-serif;
+        color: var(--gold-2);
+        letter-spacing: 3px;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .hero h2{
+        font-size: 40px;
+        line-height: 1.15;
+        max-width: 620px;
+        margin-bottom: 16px;
+      }
+      .hero p{
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        max-width: 520px;
+        color: #e9f2ee;
+        line-height:1.6;
+        margin-bottom: 20px;
+      }
+      .hero-tags{
+        display:flex;
+        flex-wrap:wrap;
+        gap: 10px;
+        margin-bottom: 26px;
+      }
+      .hero-tag{
+        font-family: Arial, sans-serif;
+        font-size: 12.5px;
+        font-weight:700;
+        background: rgba(255,255,255,.12);
+        border: 1px solid rgba(247,196,108,.55);
+        color: var(--gold-2);
+        padding: 7px 14px;
+        border-radius: 999px;
+      }
+      .hero-btn{
+        display:inline-block;
+        background: var(--gold);
+        color: var(--deep);
+        font-family: Arial, sans-serif;
+        font-weight:700;
+        padding: 14px 28px;
+        border-radius: 999px;
+        text-decoration:none;
+        font-size: 15px;
+        border:none;
+        cursor:pointer;
+      }
+
+      /* MCMV EXPLAINER */
+      .explainer{
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 56px 20px 10px;
+      }
+      .explainer h2{
+        font-size: 26px;
+        color: var(--deep);
+        margin-bottom: 8px;
+      }
+      .explainer > p.sans{
+        color: var(--muted);
+        font-size: 14.5px;
+        max-width: 720px;
+        line-height:1.6;
+        margin-bottom: 28px;
+      }
+      .explainer-grid{
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+      .explainer-card{
+        background:white;
+        border-radius: 14px;
+        padding: 20px 20px 22px;
+        box-shadow: 0 4px 14px rgba(14,74,58,.07);
+      }
+      .explainer-card .ic{
+        width: 38px; height:38px;
+        background: var(--deep);
+        color: var(--gold-2);
+        border-radius: 10px;
+        display:flex; align-items:center; justify-content:center;
+        font-family: Arial, sans-serif;
+        font-weight:700;
+        margin-bottom: 12px;
+        font-size: 15px;
+      }
+      .explainer-card h3{
+        font-size: 16px;
+        color: var(--deep);
+        margin-bottom: 6px;
+      }
+      .explainer-card p{
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        color: #4d5a54;
+        line-height: 1.55;
+      }
+
+      /* TABS */
+      .tabs-wrap{
+        max-width:1180px;
+        margin: 40px auto 0;
+        position:relative;
+        z-index: 5;
+        padding: 0 20px;
+      }
+      .tabs{
+        background:white;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(14,74,58,.12);
+        display:flex;
+        padding: 6px;
+        gap:6px;
+      }
+      .tab-btn{
+        flex:1;
+        font-family: Arial, sans-serif;
+        font-weight:700;
+        font-size: 14px;
+        padding: 14px 10px;
+        border:none;
+        background: transparent;
+        color: var(--deep);
+        border-radius: 10px;
+        cursor:pointer;
+        letter-spacing:.3px;
+        transition: all .2s ease;
+      }
+      .tab-btn.active{
+        background: var(--deep);
+        color: var(--gold-2);
+      }
+
+      /* GRID */
+      .section{
+        max-width:1180px;
+        margin: 0 auto;
+        padding: 30px 20px 80px;
+      }
+      .region-panel{ display:none; }
+      .region-panel.active{ display:block; }
+      .grid{
+        display:grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 26px;
+        margin-top: 30px;
+      }
+      .card{
+        background:white;
+        border-radius: 16px;
+        overflow:hidden;
+        box-shadow: 0 6px 20px rgba(14,74,58,.08);
+        display:flex;
+        flex-direction:column;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .card.destaque{
+        border: 2px solid var(--gold);
+        box-shadow: 0 10px 28px rgba(242,169,59,.28);
+      }
+      .card.destaque .badge{ background: var(--gold); color: var(--deep); font-weight:700; }
+      .card:hover{
+        transform: translateY(-4px);
+        box-shadow: 0 14px 30px rgba(14,74,58,.16);
+      }
+      .card-img{
+        height: 200px;
+        background-size: cover;
+        background-position:center;
+        position:relative;
+        cursor:pointer;
+      }
+      .card-img .gallery-hint{
+        position:absolute;
+        bottom:10px; left:50%;
+        transform: translateX(-50%);
+        background: rgba(8,38,28,.85);
+        color:#fff;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        opacity:0;
+        transition: opacity .2s ease;
+        pointer-events:none;
+        white-space:nowrap;
+      }
+      .card-img:hover .gallery-hint{ opacity:1; }
+      .card-img.placeholder{
+        background: linear-gradient(135deg, var(--deep) 0%, var(--deep-2) 60%, #1c6a52 100%);
+        display:flex; align-items:center; justify-content:center;
+      }
+      .card-img.placeholder .ph-label{
+        font-family: Arial, sans-serif;
+        color: var(--gold-2);
+        font-size: 12px;
+        letter-spacing:1.5px;
+        text-transform:uppercase;
+        border: 1px solid rgba(247,196,108,.5);
+        padding: 8px 14px;
+        border-radius: 999px;
+      }
+      .badge{
+        position:absolute;
+        top:12px; left:12px;
+        background: rgba(14,74,58,.88);
+        color: var(--gold-2);
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        letter-spacing:.5px;
+      }
+      .card-body{
+        padding: 18px 20px 20px;
+        display:flex;
+        flex-direction:column;
+        flex:1;
+      }
+      .card-body h3{
+        font-size: 19px;
+        color: var(--deep);
+        margin-bottom: 4px;
+      }
+      .card-loc{
+        font-family: Arial, sans-serif;
+        font-size: 12.5px;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+      .card-desc{
+        font-family: Arial, sans-serif;
+        font-size: 13.5px;
+        color: #4a5750;
+        line-height:1.55;
+        margin-bottom: 14px;
+        flex:1;
+      }
+      .card-price{
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 2px;
+      }
+      .card-price strong{
+        color: var(--deep);
+        font-size: 15.5px;
+        font-family: Georgia, serif;
+      }
+      .card-actions{
+        display:flex;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .btn-sm{
+        flex:1;
+        text-align:center;
+        font-family: Arial, sans-serif;
+        font-size: 12.5px;
+        font-weight:700;
+        padding: 10px 8px;
+        border-radius: 8px;
+        text-decoration:none;
+        letter-spacing:.2px;
+        border:none;
+        cursor:pointer;
+      }
+      .btn-primary{ background: var(--gold); color: var(--deep); }
+      .btn-whatsapp{ background:#16a34a; color:#fff; display:flex; align-items:center; justify-content:center; gap:5px; }
+      .btn-ghost{ background:transparent; color: var(--deep); }
+      .card-thumbs{ display:none; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0 4px; }
+      .card.show-thumbs .card-thumbs{ display:grid; }
+      .thumb{ position:relative; aspect-ratio:4/3; border-radius:8px; background-size:cover; background-position:center; cursor:pointer; border:1px solid rgba(0,0,0,.08); }
+      .thumb span{ position:absolute; left:6px; bottom:6px; background:rgba(15,40,30,.85); color:#fff; font:700 10.5px Arial,sans-serif; padding:3px 8px; border-radius:999px; }
+
+      .section-title{
+        font-size: 26px;
+        color: var(--deep);
+        margin-bottom: 4px;
+      }
+      .section-sub{
+        font-family: Arial, sans-serif;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      footer{
+        background: var(--deep);
+        color: #cfe3da;
+        text-align:center;
+        padding: 30px 20px;
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+      }
+      footer .gold{ color: var(--gold-2); font-weight:700; }
+
+      /* MODAL */
+      .modal-overlay{
+        display:none;
+        position:fixed; inset:0;
+        background: rgba(14,20,18,.55);
+        z-index: 200;
+        align-items:center;
+        justify-content:center;
+        padding: 20px;
+      }
+      .modal-overlay.open{ display:flex; }
+      .modal-box{
+        background:white;
+        border-radius: 18px;
+        max-width: 420px;
+        width:100%;
+        padding: 28px 26px 26px;
+        position:relative;
+      }
+      .modal-close{
+        position:absolute;
+        top:14px; right:16px;
+        background:none; border:none;
+        font-size: 20px;
+        color: var(--muted);
+        cursor:pointer;
+        font-family: Arial, sans-serif;
+      }
+      .modal-box h3{
+        font-size: 20px;
+        color: var(--deep);
+        margin-bottom: 4px;
+      }
+      .modal-sub{
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .modal-sub strong{ color: var(--deep); }
+      .field{ margin-bottom: 12px; }
+      .field label{
+        display:block;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        font-weight:700;
+        color: var(--deep);
+        margin-bottom: 5px;
+      }
+      .field input{
+        width:100%;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding: 11px 12px;
+        border: 1.5px solid #dfe6e1;
+        border-radius: 8px;
+        outline:none;
+      }
+      .field input:focus{ border-color: var(--deep); }
+      .modal-submit{
+        width:100%;
+        margin-top: 10px;
+        background: var(--deep);
+        color: var(--gold-2);
+        font-family: Arial, sans-serif;
+        font-weight:700;
+        font-size: 14.5px;
+        padding: 13px;
+        border:none;
+        border-radius: 10px;
+        cursor:pointer;
+      }
+      .modal-status{
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        text-align:center;
+        margin-top: 12px;
+        display:none;
+      }
+      .modal-status.show{ display:block; }
+      .modal-status.ok{ color: var(--deep); font-weight:700; }
+      .modal-status.err{ color: #b23b3b; }
+
+      /* GALLERY LIGHTBOX */
+      .gallery-overlay{
+        display:none;
+        position:fixed; inset:0;
+        background: rgba(8,12,10,.92);
+        z-index: 300;
+        align-items:center;
+        justify-content:center;
+        padding: 20px;
+      }
+      .gallery-overlay.open{ display:flex; }
+      .gallery-box{
+        background:#fff;
+        border-radius: 18px;
+        max-width: 1000px;
+        width:100%;
+        max-height: 90vh;
+        display:flex;
+        flex-direction:column;
+        overflow:hidden;
+        position:relative;
+      }
+      .gallery-close{
+        position:absolute;
+        top:12px; right:16px;
+        background: rgba(255,255,255,.9);
+        border:none;
+        width:36px; height:36px;
+        border-radius: 50%;
+        font-size: 22px;
+        color: var(--deep);
+        cursor:pointer;
+        z-index: 5;
+        display:flex; align-items:center; justify-content:center;
+      }
+      .gallery-title{
+        padding: 18px 22px 10px;
+        font-size: 20px;
+        color: var(--deep);
+        border-bottom: 1px solid #e8ece9;
+      }
+      .gallery-main{
+        flex:1;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background: #0b120f;
+        min-height: 320px;
+        position:relative;
+      }
+      .gallery-main img{
+        max-width:100%;
+        max-height: 56vh;
+        object-fit: contain;
+      }
+      .gallery-nav{
+        position:absolute;
+        top:50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,.85);
+        border:none;
+        width:40px; height:40px;
+        border-radius: 50%;
+        font-size: 18px;
+        color: var(--deep);
+        cursor:pointer;
+        display:flex; align-items:center; justify-content:center;
+      }
+      .gallery-nav.prev{ left: 12px; }
+      .gallery-nav.next{ right: 12px; }
+      .gallery-tabs{
+        display:flex;
+        gap: 8px;
+        padding: 12px 16px 0;
+        background: #fff;
+      }
+      .gallery-tab{
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 8px 14px;
+        border: none;
+        background: #e8ece9;
+        color: var(--deep);
+        border-radius: 8px;
+        cursor:pointer;
+      }
+      .gallery-tab.active{ background: var(--deep); color: var(--gold-2); }
+      .gallery-thumbs{
+        display:flex;
+        gap: 8px;
+        padding: 12px 16px 16px;
+        overflow-x:auto;
+        background: #fff;
+      }
+      .gallery-thumb{
+        width: 80px; height: 60px;
+        flex-shrink:0;
+        object-fit:cover;
+        border-radius: 8px;
+        cursor:pointer;
+        border: 2px solid transparent;
+      }
+      .gallery-thumb.active{ border-color: var(--deep); }
+      .gallery-counter{
+        position:absolute;
+        bottom: 14px;
+        left:50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,.55);
+        color:#fff;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        padding: 4px 12px;
+        border-radius: 999px;
+      }
+
+      @media (max-width: 640px){
+        .float-cta{ right: 12px; bottom: 12px; padding: 12px 18px; font-size: 13px; }
+        .hero h2{ font-size: 28px; }
+        .tabs{ flex-direction: column; }
+      }
+          .broker-strip{
+        background: linear-gradient(90deg, var(--deep), var(--deep-2));
+        border-top: 1px solid rgba(242,169,59,.45);
+        border-bottom: 1px solid rgba(242,169,59,.45);
+        padding: 10px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 14px;
+      }
+      .broker-strip span{
+        font-size: 11px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--gold-2);
+      }
+      .broker-strip strong{ color: #fff; font-size: 17px; }
+      .broker-strip em{
+        font-style: normal;
+        margin-left: auto;
+        color: var(--gold-2);
+        font-size: 14px;
+      }
+      .broker-strip a{ color: var(--gold-2); text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <div class="brand">
+          <div class="mark">MV</div>
+          <h1>Rede Minha Casa<br />Minha Vida<span>Programa MCMV</span></h1>
+        </div>
+      </div>
+    </header>
+    <div class="broker-strip">
+      <span>Atendimento pessoal</span>
+      <strong>Central de Atendimento</strong>
+      <em>WhatsApp <a href="https://wa.me/5511973811001?text=Ol%C3%A1%20Central%20de%20Atendimento!%20Vim%20pelo%20site%20da%20Rede%20Minha%20Casa%20Minha%20Vida." target="_blank" rel="noopener noreferrer">(11) 97381-1001</a></em>
+    </div>
+
+    <section class="hero">
+      <video class="hero-bg" autoplay loop muted playsinline preload="auto" poster="/rede-mcmv/images/hero_vista_plaza.jpg">
+        <source src="/__l5e/assets-v1/d042da91-b9fe-4454-9e11-1b1a55f7c357/sky.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="eyebrow sans">Programa Minha Casa Minha Vida · atendimento com Central de Atendimento</div>
+        <h2>O imóvel próprio começa com a aprovação certa.</h2>
+        <p class="sans">
+          Reunimos empreendimentos do programa MCMV em Taboão da Serra e São Paulo em um só lugar. A gente entende sua
+          renda primeiro, depois MOSTRAMOS o apartamento certo.
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">A partir de R$ 230 mil</span>
+          <span class="hero-tag">Escritura grátis</span>
+          <span class="hero-tag">Subsídio do governo</span>
+          <span class="hero-tag">Uso do FGTS</span>
+        </div>
+        <button class="hero-btn" onclick="openModal('Interesse geral')">Quero ser atendido</button>
+      </div>
+    </section>
+
+    <div class="tabs-wrap">
+      <div class="tabs sans">
+        <button class="tab-btn active" onclick="showRegion('geral')">Geral</button>
+        <button class="tab-btn" onclick="showRegion('taboao')">Taboão da Serra</button>
+        <button class="tab-btn" onclick="showRegion('sp')">São Paulo</button>
+      </div>
+    </div>
+
+    <section class="section" id="empreendimentos">
+      <!-- GERAL -->
+      <div class="region-panel active" id="panel-geral">
+        <h2 class="section-title">Todos os empreendimentos</h2>
+        <p class="section-sub">
+          Taboão da Serra e São Paulo, num só lugar. A partir de R$ 230 mil, com escritura grátis e benefícios do
+          governo.
+        </p>
+        <div class="grid" id="grid-geral"></div>
+      </div>
+
+      <!-- TABOÃO DA SERRA -->
+      <div class="region-panel" id="panel-taboao">
+        <h2 class="section-title">Empreendimentos em Taboão da Serra</h2>
+        <p class="section-sub">A partir de R$ 230 mil, com escritura grátis e benefícios do governo.</p>
+        <div class="grid" id="grid-taboao"></div>
+      </div>
+
+      <!-- SÃO PAULO -->
+      <div class="region-panel" id="panel-sp">
+        <h2 class="section-title">Empreendimentos em São Paulo</h2>
+        <p class="section-sub">A partir de R$ 230 mil, com escritura grátis e benefícios do governo.</p>
+        <div class="grid" id="grid-sp"></div>
+      </div>
+    </section>
+
+    <div class="explainer">
+      <h2>O que é o Minha Casa Minha Vida</h2>
+      <p class="sans">
+        É o programa do Governo Federal que facilita a compra da casa própria para quem tem renda familiar mais baixa —
+        com subsídio, juros menores e documentação mais simples do que num financiamento comum.
+      </p>
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <div class="ic">1</div>
+          <h3>Subsídio do governo</h3>
+          <p>Parte do valor do imóvel é abatida direto pelo governo, de acordo com a sua faixa de renda.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="ic">2</div>
+          <h3>Use seu FGTS</h3>
+          <p>O saldo do FGTS pode entrar como parte do pagamento, reduzindo o valor financiado.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="ic">3</div>
+          <h3>Escritura grátis</h3>
+          <p>Os empreendimentos da Rede saem com escritura sem custo adicional para você.</p>
+        </div>
+        <div class="explainer-card">
+          <div class="ic">4</div>
+          <h3>Parcelas que cabem no bolso</h3>
+          <p>Taxas reduzidas e parcelas calculadas de acordo com o que você já paga de aluguel hoje.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        <span class="gold">Rede Minha Casa Minha Vida</span> · cadastre seu interesse e um consultor entra em contato
+      </p>
+      <p style="margin-top:6px;">Programa Minha Casa Minha Vida (MCMV) · Taboão da Serra e São Paulo · atendimento com Central de Atendimento · WhatsApp (11) 97381-1001</p>
+    </footer>
+
+    <!-- GALERIA LIGHTBOX -->
+    <div id="gallery-overlay" class="gallery-overlay" onclick="closeGallery(event)">
+      <div class="gallery-box" onclick="event.stopPropagation()">
+        <button class="gallery-close" aria-label="Fechar" onclick="closeGallery()">&times;</button>
+        <div class="gallery-title" id="gallery-title">Galeria</div>
+        <div class="gallery-main">
+          <button class="gallery-nav prev" onclick="prevImage()">&#10094;</button>
+          <img id="gallery-img" src="" alt="Foto do empreendimento">
+          <button class="gallery-nav next" onclick="nextImage()">&#10095;</button>
+          <div class="gallery-counter" id="gallery-counter">1 / 1</div>
+        </div>
+        <div class="gallery-tabs" id="gallery-tabs"></div>
+        <div class="gallery-thumbs" id="gallery-thumbs"></div>
+      </div>
+    </div>
+
+    <!-- Botão flutuante WhatsApp -->
+    <a id="whatsapp-float" class="whatsapp-float" href="#" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp
+    </a>
+    <script>
+      (function(){
+        var numero='5511973811001';
+        var mensagem='Olá! Vim pelo site da Rede Minha Casa Minha Vida e quero falar com Central de Atendimento.';
+        document.getElementById('whatsapp-float').href='https://wa.me/'+numero+'?text='+encodeURIComponent(mensagem);
+      })();
+    </script>
+
+
+
+    <!-- Blão flutuante promoção -->
+    <a class="promo-float" id="promoBanner" href="https://wa.me/5511973811001?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Rede%20Minha%20Casa%20Minha%20Vida%2C%20atendimento%20com%20Central%20de%20Atendimento%2C%20e%20quero%20saber%20mais%20sobre%20as%20parcelas%20durante%20obra%20a%20partir%20de%20R%24%20800%2C00." target="_blank" rel="noopener noreferrer">
+      <span class="emoji">🎉</span> PARCELAS OBRA<br><strong>R$ 800,00</strong>
+    </a>
+
+
+
+    <!-- MODAL DE CADASTRO -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <h3>Fale com o especialista</h3>
+        <p class="modal-sub">
+          Interesse em: <strong id="modalEmpreendimento">Interesse geral</strong>. Toque abaixo para falar com um consultor pelo WhatsApp.
+        </p>
+        <a id="modalWhatsApp" class="modal-submit" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-align:center;text-decoration:none">Falar no WhatsApp</a>
+        <p class="modal-status" id="modalStatus"></p>
+      </div>
+    </div>
+
+
+    <script>
+      // ---------- Dados dos empreendimentos ----------
+      var empreendimentos = [
+        { nome:"Abiatar Conecta Capão Redondo", regiao:"sp", destaque:true, loc:"Capão Redondo, São Paulo", badge:"Destaque", img:"/rede-mcmv/images/emp/abiatar_conecta_foto_01.jpg", fotos:["/rede-mcmv/images/emp/abiatar_conecta_foto_01.jpg", "/rede-mcmv/images/emp/abiatar_conecta_foto_02.jpg", "/rede-mcmv/images/emp/abiatar_conecta_foto_03.jpg", "/rede-mcmv/images/emp/abiatar_conecta_foto_04.jpg", "/rede-mcmv/images/emp/abiatar_conecta_foto_05.jpg"], plantas:[],
+          desc:"Seu ponto de conexão com o melhor da região: piscina, deck solarium, praças, boulevard de lazer, academia, quadra, coworking e muito mais. Fale com um consultor." },
+        { nome:"Vista Plaza Residencial", regiao:"taboao", loc:"Taboão da Serra", badge:"Lançamento", img:"/rede-mcmv/images/vp_lobby.jpg", fotos:["/rede-mcmv/images/vp_lobby.jpg", "/rede-mcmv/images/emp/vista_plaza_foto_01.jpg", "/rede-mcmv/images/emp/vista_plaza_foto_02.jpg", "/rede-mcmv/images/emp/vista_plaza_foto_03.jpg", "/rede-mcmv/images/emp/vista_plaza_foto_04.jpg"], plantas:[],
+          desc:"Lazer completo: pizza gourmet, pet place, lounge com wi-fi, lobby decorado. 1 e 2 dorms com vaga." },
+        { nome:"Abiatar Residence Tower", regiao:"taboao", loc:"Jardim da Glória, Taboão da Serra", badge:"285 unidades", img:"/rede-mcmv/images/abiatar.jpg", fotos:["/rede-mcmv/images/abiatar.jpg", "/rede-mcmv/images/emp/abiatar_foto_01.jpg", "/rede-mcmv/images/emp/abiatar_foto_02.jpg", "/rede-mcmv/images/emp/abiatar_foto_03.jpg", "/rede-mcmv/images/emp/abiatar_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/abiatar_planta_01.jpg"],
+          desc:"2 dorms com vaga. Empreendimento com 285 unidades e ampla área de lazer." },
+        { nome:"Áurea Sky", regiao:"taboao", loc:"Pq. Ind. das Oliveiras, Taboão da Serra", badge:"Lazer premium", img:"/rede-mcmv/images/aureasky.jpg", fotos:["/rede-mcmv/images/aureasky.jpg", "/rede-mcmv/images/emp/aurea_foto_01.jpg", "/rede-mcmv/images/emp/aurea_foto_02.jpg", "/rede-mcmv/images/emp/aurea_foto_03.jpg", "/rede-mcmv/images/emp/aurea_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/aurea_planta_01.jpg"],
+          desc:"2 dorms (41 e 47 m²) com vaga. Empreendimento moderno, lazer premium e vista privilegiada." },
+        { nome:"Residencial Clube Laguna", regiao:"taboao", loc:"Parque Laguna, Taboão da Serra", badge:"Clube completo", img:"/rede-mcmv/images/laguna.jpg", fotos:["/rede-mcmv/images/laguna.jpg", "/rede-mcmv/images/emp/laguna_foto_01.jpg", "/rede-mcmv/images/emp/laguna_foto_02.jpg", "/rede-mcmv/images/emp/laguna_foto_03.jpg", "/rede-mcmv/images/emp/laguna_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/laguna_planta_01.jpg"],
+          desc:"1 e 2 dorms (40 e 41 m²) com vaga. Estrutura de clube completa e financiamento facilitado." },
+        { nome:"Villa São Francisco II", regiao:"taboao", loc:"Jardim Três Irmãos, Taboão da Serra", badge:"Perto do Shopping", img:"/rede-mcmv/images/villasf.jpg", fotos:["/rede-mcmv/images/villasf.jpg"], plantas:[],
+          desc:"2 dorms (42 m²) com vaga. Próximo ao Shopping Taboão e Parque das Hortênsias." },
+        { nome:"Villa São Francisco (I, III, IV)", regiao:"taboao", loc:"Jardim Três Irmãos, Taboão da Serra", badge:null, img:"/rede-mcmv/images/villasf2.jpg", fotos:["/rede-mcmv/images/villasf2.jpg"], plantas:[],
+          desc:"Demais fases do Villa São Francisco. Fale com um consultor para disponibilidade atual." },
+        { nome:"Griffe Jasmins Residencial", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:null, img:"/rede-mcmv/images/jasmins1.jpg", fotos:["/rede-mcmv/images/jasmins1.jpg", "/rede-mcmv/images/emp/jasmins1_foto_01.jpg", "/rede-mcmv/images/emp/jasmins1_foto_02.jpg", "/rede-mcmv/images/emp/jasmins1_foto_03.jpg", "/rede-mcmv/images/emp/jasmins1_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/jasmins1_planta_01.jpg"],
+          desc:"Empreendimento MCMV na região dos Jasmins. Fale com um consultor para plantas e disponibilidade." },
+        { nome:"Griffe Jasmins 2 Residencial", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:"Lazer no rooftop", img:"/rede-mcmv/images/jasmins2.jpg", fotos:["/rede-mcmv/images/jasmins2.jpg", "/rede-mcmv/images/emp/jasmins2_foto_01.jpg", "/rede-mcmv/images/emp/jasmins2_foto_02.jpg", "/rede-mcmv/images/emp/jasmins2_foto_03.jpg", "/rede-mcmv/images/emp/jasmins2_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/jasmins2_planta_01.jpg"],
+          desc:"Segunda fase do Griffe Jasmins. Fale com um consultor para plantas e disponibilidade." },
+        { nome:"Griffe Kizaemon", regiao:"taboao", loc:"Jardim Iracema, Taboão da Serra", badge:null, img:"/rede-mcmv/images/kizaemon.jpg", fotos:["/rede-mcmv/images/kizaemon.jpg", "/rede-mcmv/images/emp/kizaemon_foto_01.jpg", "/rede-mcmv/images/emp/kizaemon_foto_02.jpg", "/rede-mcmv/images/emp/kizaemon_foto_03.jpg", "/rede-mcmv/images/emp/kizaemon_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/kizaemon_planta_01.jpg"],
+          desc:"Empreendimento MCMV pronto para morar. Fale com um consultor para disponibilidade." },
+        { nome:"Vista Parque Chácara Joquey", regiao:"taboao", loc:"Taboão da Serra", badge:null, img:"/rede-mcmv/images/joquey.jpg", fotos:["/rede-mcmv/images/joquey.jpg", "/rede-mcmv/images/emp/joquey_foto_01.jpg", "/rede-mcmv/images/emp/joquey_foto_02.jpg", "/rede-mcmv/images/emp/joquey_foto_03.jpg", "/rede-mcmv/images/emp/joquey_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/joquey_planta_01.jpg"],
+          desc:"Empreendimento MCMV. Fale com um consultor para plantas e disponibilidade." },
+        { nome:"Vista Parque Clube II", regiao:"taboao", loc:"Parque Assunção, Taboão da Serra", badge:null, img:"/rede-mcmv/images/vparqueII.jpg", fotos:["/rede-mcmv/images/vparqueII.jpg"], plantas:[],
+          desc:"1 dorm com vaga, com opção garden disponível. Fale com um consultor para disponibilidade." },
+        { nome:"Innovare Aricanduva", regiao:"sp", loc:"Vila Aricanduva, São Paulo", badge:"Primeiro imóvel", img:"/rede-mcmv/images/aricanduva.jpg", fotos:["/rede-mcmv/images/aricanduva.jpg", "/rede-mcmv/images/emp/aricanduva_foto_01.jpg", "/rede-mcmv/images/emp/aricanduva_foto_02.jpg", "/rede-mcmv/images/emp/aricanduva_foto_03.jpg", "/rede-mcmv/images/emp/aricanduva_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/aricanduva_planta_01.jpg"],
+          desc:"2 dorms (38 m²) com vaga. Excelente para primeiro imóvel com subsídio do governo e uso do FGTS." },
+        { nome:"Up Vila Santa Catarina", regiao:"sp", loc:"Vila Santa Catarina, São Paulo", badge:"Zona Sul", img:"/rede-mcmv/images/santacatarina.jpg", fotos:["/rede-mcmv/images/santacatarina.jpg", "/rede-mcmv/images/emp/santa_catarina_foto_01.jpg", "/rede-mcmv/images/emp/santa_catarina_foto_02.jpg", "/rede-mcmv/images/emp/santa_catarina_foto_03.jpg", "/rede-mcmv/images/emp/santa_catarina_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/santa_catarina_planta_01.jpg"],
+          desc:"2 dorms (36 a 37 m²) com vaga. Região valorizada da Zona Sul, perto de comércios e transporte." },
+        { nome:"Residencial Algarve", regiao:"sp", loc:"Rio Pequeno, São Paulo", badge:"Zona Oeste", img:"/rede-mcmv/images/algarve.jpg", fotos:["/rede-mcmv/images/algarve.jpg", "/rede-mcmv/images/emp/algarve_foto_01.jpg", "/rede-mcmv/images/emp/algarve_foto_02.jpg", "/rede-mcmv/images/emp/algarve_foto_03.jpg", "/rede-mcmv/images/emp/algarve_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/algarve_planta_01.jpg"],
+          desc:"2 dorms em localização estratégica da Zona Oeste, com fácil acesso à USP e Marginais." },
+        { nome:"Innovare Portal do Morumbi", regiao:"sp", loc:"Guilherme Dumon Vilares, São Paulo", badge:null, img:"/rede-mcmv/images/morumbi.jpg", fotos:["/rede-mcmv/images/morumbi.jpg", "/rede-mcmv/images/emp/portal_morumbi_foto_01.jpg", "/rede-mcmv/images/emp/portal_morumbi_foto_02.jpg", "/rede-mcmv/images/emp/portal_morumbi_foto_03.jpg", "/rede-mcmv/images/emp/portal_morumbi_foto_04.jpg"], plantas:["/rede-mcmv/images/emp/portal_morumbi_planta_01.jpg"],
+          desc:"Empreendimento MCMV em construção na região do Morumbi. Fale com um consultor para disponibilidade." },
+      ];
+
+      function thumbsHTML(e, safeName){
+        var f = e.fotos || [], p = (e.plantas || []).slice(0,1), h = '';
+        for (var i = 0; i < f.length && i < 5; i++) h += '<div class="thumb" style="background-image:url(\'' + f[i] + '\')" onclick="openGalleryAt(\'' + safeName + '\',\'fotos\',' + i + ')"><span>Foto ' + (i+1) + '</span></div>';
+        if (p.length) h += '<div class="thumb" style="background-image:url(\'' + p[0] + '\')" onclick="openGalleryAt(\'' + safeName + '\',\'plantas\',0)"><span>Planta</span></div>';
+        return h ? '<div class="card-thumbs">' + h + '</div>' : '';
+      }
+      function toggleThumbs(btn){
+        var card = btn.closest('.card');
+        var open = card.classList.toggle('show-thumbs');
+        btn.textContent = open ? 'Ocultar fotos' : 'Ver fotos';
+      }
+      function openGalleryAt(nome, tab, idx){
+        openGallery(nome);
+        galleryState.currentTab = tab; galleryState.idx = idx;
+        renderGalleryTabs(); renderGallery();
+      }
+
+      function cardHTML(e){
+        var zapMsg = 'Olá! Vim pelo site da Rede Minha Casa Minha Vida, atendimento com Central de Atendimento, e tenho interesse no empreendimento: ' + e.nome + '.';
+        var zapHref = 'https://wa.me/5511973811001?text=' + encodeURIComponent(zapMsg);
+        var badgeHtml = e.badge ? ('<span class="badge">' + e.badge + '</span>') : '';
+        var safeName = e.nome.replace(/'/g, "\\'");
+        var imgBlock = e.img
+          ? '<div class="card-img" style="background-image:url(\'' + e.img + '\');cursor:pointer;" onclick="openGallery(\'' + safeName + '\')" title="Clique para ver fotos">' + badgeHtml + '<span class="gallery-hint">📷 Ver fotos</span></div>'
+          : '<div class="card-img placeholder"><span class="ph-label">Book em atualização</span></div>';
+        return '' +
+          '<div class="card' + (e.destaque ? ' destaque' : '') + '">' +
+            imgBlock +
+            '<div class="card-body">' +
+              '<h3>' + e.nome + '</h3>' +
+              '<div class="card-loc">' + e.loc + '</div>' +
+              thumbsHTML(e, safeName) +
+              '<p class="card-desc">' + e.desc + '</p>' +
+              '<div class="card-price">A partir de<br><strong>Sob consulta</strong></div>' +
+              '<div class="card-actions">' +
+                '<button class="btn-sm btn-primary" onclick="openModal(\'' + safeName + '\')">Quero saber mais</button>' +
+                ((e.fotos && e.fotos.length) || (e.plantas && e.plantas.length) ? '<button class="btn-sm btn-ghost" onclick="toggleThumbs(this)">Ver fotos</button>' : '') +
+              '</div>' +
+              '<a class="btn-sm btn-whatsapp" style="margin-top:8px" href="' + zapHref + '" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>' +
+            '</div>' +
+          '</div>';
+      }
+      var gridGeral = document.getElementById('grid-geral');
+      var gridTaboao = document.getElementById('grid-taboao');
+      var gridSp = document.getElementById('grid-sp');
+      for (var i = 0; i < empreendimentos.length; i++){
+        var e = empreendimentos[i];
+        gridGeral.innerHTML += cardHTML(e);
+        if(e.regiao === 'taboao') gridTaboao.innerHTML += cardHTML(e);
+        if(e.regiao === 'sp') gridSp.innerHTML += cardHTML(e);
+      }
+
+      // ---------- Tabs ----------
+      function showRegion(region){
+        var panels = document.querySelectorAll('.region-panel');
+        for (var i = 0; i < panels.length; i++){ panels[i].classList.remove('active'); }
+        var tabs = document.querySelectorAll('.tab-btn');
+        for (var j = 0; j < tabs.length; j++){ tabs[j].classList.remove('active'); }
+        document.getElementById('panel-' + region).classList.add('active');
+        event.target.classList.add('active');
+      }
+
+      // ---------- Modal / cadastro de interesse ----------
+      var whatsappNumero='5511973811001';
+      function montarWhatsAppHref(empreendimento){
+        var msg='Olá! Vim pelo site da Rede Minha Casa Minha Vida, atendimento com Central de Atendimento, e tenho interesse em: ' + empreendimento + '.';
+        return 'https://wa.me/' + whatsappNumero + '?text=' + encodeURIComponent(msg);
+      }
+      function openModal(nomeEmpreendimento){
+        document.getElementById('modalEmpreendimento').textContent = nomeEmpreendimento;
+        document.getElementById('modalWhatsApp').href = montarWhatsAppHref(nomeEmpreendimento);
+        document.getElementById('modalOverlay').classList.add('open');
+        document.getElementById('modalStatus').classList.remove('show','ok','err');
+      }
+      function closeModal(){
+        document.getElementById('modalOverlay').classList.remove('open');
+      }
+
+      // ---------- Gallery lightbox ----------
+      var galleryState = { nome: '', fotos: [], plantas: [], currentTab: 'fotos', idx: 0 };
+      function getGalleryList(){ return galleryState.currentTab === 'plantas' ? galleryState.plantas : galleryState.fotos; }
+      function openGallery(nome){
+        var e = empreendimentos.find(function(x){ return x.nome === nome; });
+        if(!e) return;
+        galleryState = { nome: nome, fotos: e.fotos || [], plantas: e.plantas || [], currentTab: 'fotos', idx: 0 };
+        document.getElementById('gallery-title').textContent = nome;
+        document.getElementById('gallery-overlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        renderGalleryTabs();
+        renderGallery();
+      }
+      function closeGallery(ev){
+        if(ev && ev.target !== document.getElementById('gallery-overlay')) return;
+        document.getElementById('gallery-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      function renderGalleryTabs(){
+        var tabs = document.getElementById('gallery-tabs');
+        var html = '';
+        if(galleryState.fotos.length) html += '<button class="gallery-tab ' + (galleryState.currentTab === 'fotos' ? 'active' : '') + '" onclick="switchGalleryTab(\'fotos\')">Fotos (' + galleryState.fotos.length + ')</button>';
+        if(galleryState.plantas.length) html += '<button class="gallery-tab ' + (galleryState.currentTab === 'plantas' ? 'active' : '') + '" onclick="switchGalleryTab(\'plantas\')">Plantas (' + galleryState.plantas.length + ')</button>';
+        tabs.innerHTML = html;
+      }
+      function switchGalleryTab(tab){
+        galleryState.currentTab = tab;
+        galleryState.idx = 0;
+        renderGalleryTabs();
+        renderGallery();
+      }
+      function renderGallery(){
+        var list = getGalleryList();
+        var img = document.getElementById('gallery-img');
+        if(!list.length){ img.src = ''; img.alt = 'Sem imagens'; return; }
+        img.src = list[galleryState.idx];
+        img.alt = galleryState.nome + ' - ' + (galleryState.currentTab === 'plantas' ? 'planta' : 'foto') + ' ' + (galleryState.idx + 1);
+        document.getElementById('gallery-counter').textContent = (galleryState.idx + 1) + ' / ' + list.length;
+        var thumbs = document.getElementById('gallery-thumbs');
+        thumbs.innerHTML = list.map(function(src, i){
+          return '<img class="gallery-thumb ' + (i === galleryState.idx ? 'active' : '') + '" src="' + src + '" onclick="goToImage(' + i + ')">';
+        }).join('');
+      }
+      function nextImage(){
+        var list = getGalleryList();
+        if(!list.length) return;
+        galleryState.idx = (galleryState.idx + 1) % list.length;
+        renderGallery();
+      }
+      function prevImage(){
+        var list = getGalleryList();
+        if(!list.length) return;
+        galleryState.idx = (galleryState.idx - 1 + list.length) % list.length;
+        renderGallery();
+      }
+      function goToImage(i){
+        galleryState.idx = i;
+        renderGallery();
+      }
+      document.addEventListener('keydown', function(ev){
+        if(!document.getElementById('gallery-overlay').classList.contains('open')) return;
+        if(ev.key === 'Escape') closeGallery();
+        if(ev.key === 'ArrowRight') nextImage();
+        if(ev.key === 'ArrowLeft') prevImage();
+      });
+
+    </script>
+  </body>
+</html>
