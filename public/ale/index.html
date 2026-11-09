@@ -1069,9 +1069,7 @@
             body: JSON.stringify({ nome: nome, telefone: tel, mensagem: 'Empreendimento: ' + emp + ' | Interesse: ' + (interesse || 'Não sei ainda') + ' | Página: ' + (ORIGEM_PAGINA || 'principal') })
           }).catch(function(){});
         } catch (e) {}
-        var msg = 'Olá! Meu nome é ' + nome + '. Meu WhatsApp é ' + tel + '. Tenho interesse em ' + (interesse || 'Não sei ainda') + ' do ' + emp + '. Vim pelo site' + (ORIGEM_PAGINA ? ' (página: ' + ORIGEM_PAGINA + ')' : '') + '.';
-        window.open('https://wa.me/' + MATRIZ_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
-        setStatus('Pronto! Já estamos te atendendo pelo WhatsApp', 'ok');
+        setStatus('Pronto! Recebemos seu cadastro. Em breve um especialista vai te chamar no WhatsApp.', 'ok');
         this.reset();
       });
       function openModal(nomeEmpreendimento){
