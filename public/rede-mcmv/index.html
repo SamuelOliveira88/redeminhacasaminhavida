@@ -1027,6 +1027,7 @@
         try {
           fetch(LEADS_URL, {
             method: 'POST',
+            keepalive: true,
             headers: { 'apikey': LEADS_KEY, 'Authorization': 'Bearer ' + LEADS_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
             body: JSON.stringify({ nome: nome, whatsapp: tel, interesse: interesse || null, empreendimento: emp, origem_pagina: ORIGEM_PAGINA || 'principal' })
           });
