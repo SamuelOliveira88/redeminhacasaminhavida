@@ -60,32 +60,16 @@ for (const broker of registry.corretores) {
   // 1. a página mora fora de /rede-mcmv/, então os arquivos precisam de caminho absoluto
   html = html.replaceAll("images/", "/rede-mcmv/images/");
 
-  // 2. número do WhatsApp do corretor em todos os lugares
-  html = html.replaceAll(DEFAULT_PHONE, phone);
-
-  // 3. mensagens de apresentação levam o nome do corretor
-  html = html.replace(
-    "Vim pelo site da Rede Minha Casa Minha Vida e quero falar com um especialista.",
-    `Vim pelo site da Rede Minha Casa Minha Vida e quero falar com ${nome}.`
-  );
-  html = html.replaceAll(
-    "Vim pelo site da Rede Minha Casa Minha Vida e tenho interesse",
-    `Vim pelo site da Rede Minha Casa Minha Vida, atendimento com ${nome}, e tenho interesse`
-  );
-
-  // 4. banner de promoção: reescreve o href com a mensagem personalizada
-  html = html.replace(
-    /href="https:\/\/wa\.me\/\d+\?text=Ol%C3%A1![^"]*"/,
-    `href="${waHref(phone, `Olá! Vim pelo site da Rede Minha Casa Minha Vida, atendimento com ${nome}, e quero saber mais sobre as parcelas durante obra a partir de R$ 800,00.`)}"`
-  );
+  // 2. número matriz continua o mesmo; só a origem da página muda
+  html = html.replace("var ORIGEM_PAGINA = '';", `var ORIGEM_PAGINA = ${JSON.stringify(nome)};`);
 
   // 5. título + descrição + compartilhamento
   html = html.replace(
     /<title>[^<]*<\/title>/,
     `<title>${esc(nome)} | Rede Minha Casa Minha Vida</title>
-    <meta name="description" content="Empreendimentos do programa Minha Casa Minha Vida com atendimento de ${esc(nome)}. Fale direto pelo WhatsApp ${legivel}." />
+    <meta name="description" content="Empreendimentos do programa Minha Casa Minha Vida com atendimento de ${esc(nome)}." />
     <meta property="og:title" content="${esc(nome)} | Rede Minha Casa Minha Vida" />
-    <meta property="og:description" content="Empreendimentos do programa Minha Casa Minha Vida com atendimento de ${esc(nome)}. Fale direto pelo WhatsApp ${legivel}." />
+    <meta property="og:description" content="Empreendimentos do programa Minha Casa Minha Vida com atendimento de ${esc(nome)}." />
     <meta name="robots" content="noindex, follow" />`
   );
 
@@ -124,7 +108,6 @@ for (const broker of registry.corretores) {
     <div class="broker-strip">
       <span>Atendimento pessoal</span>
       <strong>${esc(nome)}</strong>
-      <em>WhatsApp <a href="${waHref(phone, `Olá ${nome}! Vim pelo site da Rede Minha Casa Minha Vida.`)}" target="_blank" rel="noopener noreferrer">${legivel}</a></em>
     </div>`
   );
 
@@ -137,7 +120,7 @@ for (const broker of registry.corretores) {
   // 8. rodapé com o contato do corretor
   html = html.replace(
     "Programa Minha Casa Minha Vida (MCMV) · Taboão da Serra e São Paulo",
-    `Programa Minha Casa Minha Vida (MCMV) · Taboão da Serra e São Paulo · atendimento com ${esc(nome)} · WhatsApp ${legivel}`
+    `Programa Minha Casa Minha Vida (MCMV) · Taboão da Serra e São Paulo · atendimento com ${esc(nome)}`
   );
 
   const dir = join(PUBLIC, slug);
@@ -145,7 +128,7 @@ for (const broker of registry.corretores) {
   writeFileSync(join(dir, "index.html"), html);
   writeFileSync(join(dir, MARKER), "gerado por scripts/gerar-paginas-corretores.mjs — não edite à mão\n");
   generated.add(slug);
-  console.log(`ok  /${slug}/  ->  ${nome}  (${legivel})`);
+  console.log(`ok  /${slug}/  ->  ${nome}`);
 }
 
 // limpa pastas de corretores que saíram da lista (só remove as que este script criou)
