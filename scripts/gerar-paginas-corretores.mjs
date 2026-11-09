@@ -64,7 +64,8 @@ for (const broker of registry.corretores) {
   // 2. número matriz continua o mesmo; só a origem da página muda
   html = html.replace("var ORIGEM_PAGINA = '';", `var ORIGEM_PAGINA = ${JSON.stringify(nome)};`);
 
-  // 5. título + descrição + compartilhamento
+  // 5. título + descrição + compartilhamento (remove as do modelo para não duplicar)
+  html = html.replace(/\s*<meta (name="description"|property="og:title"|property="og:description")[^>]*>/g, "");
   html = html.replace(
     /<title>[^<]*<\/title>/,
     `<title>${esc(nome)} | Rede Minha Casa Minha Vida</title>
