@@ -1031,6 +1031,15 @@
             body: JSON.stringify({ nome: nome, whatsapp: tel, interesse: interesse || null, empreendimento: emp, origem_pagina: ORIGEM_PAGINA || 'principal' })
           });
         } catch (e) {}
+        // Envia para o CRM (não bloqueia o WhatsApp se falhar)
+        try {
+          fetch('/api/public/crm-lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            keepalive: true,
+            body: JSON.stringify({ nome: nome, telefone: tel, mensagem: 'Empreendimento: ' + emp + ' | Interesse: ' + (interesse || 'Não sei ainda') + ' | Página: ' + (ORIGEM_PAGINA || 'principal') })
+          }).catch(function(){});
+        } catch (e) {}
         var msg = 'Olá! Meu nome é ' + nome + '. Meu WhatsApp é ' + tel + '. Tenho interesse em ' + (interesse || 'Não sei ainda') + ' do ' + emp + '. Vim pelo site' + (ORIGEM_PAGINA ? ' (página: ' + ORIGEM_PAGINA + ')' : '') + '.';
         window.open('https://wa.me/' + MATRIZ_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
         setStatus('Pronto! Já estamos te atendendo pelo WhatsApp', 'ok');
