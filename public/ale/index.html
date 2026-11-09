@@ -1024,6 +1024,9 @@
       // ---------- Modal / cadastro de interesse ----------
       // Número matriz: troque só aqui
       var MATRIZ_WHATSAPP = '5511973811001';
+      // Banco de cadastros (Lovable Cloud)
+      var LEADS_URL = 'https://idyvbzhsvkenoslndfif.supabase.co/rest/v1/leads';
+      var LEADS_KEY = 'sb_publishable_X4Z72ng687_MWdf1nevv2w_xor0KfPA';
       // Página de origem (nas páginas de corretor vira o nome do corretor)
       var ORIGEM_PAGINA = "Ale";
       function mascaraTel(v){
@@ -1046,6 +1049,14 @@
         if (nome.length < 2) { setStatus('Por favor, informe seu nome.', 'err'); return; }
         if (digitos.length < 10 || digitos.length > 11) { setStatus('Informe um WhatsApp válido com DDD, ex.: (11) 99999-9999.', 'err'); return; }
         var emp = document.getElementById('modalEmpreendimento').textContent;
+        // Salva o cadastro no banco (não bloqueia o WhatsApp se falhar)
+        try {
+          fetch(LEADS_URL, {
+            method: 'POST',
+            headers: { 'apikey': LEADS_KEY, 'Authorization': 'Bearer ' + LEADS_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+            body: JSON.stringify({ nome: nome, whatsapp: tel, interesse: interesse || null, empreendimento: emp, origem_pagina: ORIGEM_PAGINA || 'principal' })
+          });
+        } catch (e) {}
         var msg = 'Olá! Meu nome é ' + nome + '. Meu WhatsApp é ' + tel + '. Tenho interesse em ' + (interesse || 'Não sei ainda') + ' do ' + emp + '. Vim pelo site' + (ORIGEM_PAGINA ? ' (página: ' + ORIGEM_PAGINA + ')' : '') + '.';
         window.open('https://wa.me/' + MATRIZ_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
         setStatus('Pronto! Já estamos te atendendo pelo WhatsApp', 'ok');

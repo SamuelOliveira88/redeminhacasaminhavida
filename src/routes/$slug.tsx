@@ -1,24 +1,27 @@
-import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
-import registry from "../../public/rede-mcmv/corretores.json";
-
-type Corretor = { nome: string; slug: string; telefone: string };
-
-const corretores = (registry.corretores ?? []) as Corretor[];
+import { createFileRoute } from "@tanstack/react-router";
+import { paginasCorretores } from "../generated/corretores-pages";
 
 function normaliza(raw: string) {
   return raw
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[̀-ͯ]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
 
 export const Route = createFileRoute("/$slug")({
-  loader: ({ params }) => {
-    const slug = normaliza(params.slug);
-    const broker = corretores.find((c) => normaliza(c.slug || c.nome) === slug);
-    if (!broker) throw notFound();
-    throw redirect({ href: `/${slug}/index.html`, reloadDocument: true });
+  server: {
+    handlers: {
+      GET: ({ params }) => {
+        const html = paginasCorretores[normaliza(params.slug)];
+        if (!html) {
+          return new Response("Página não encontrada", { status: 404 });
+        }
+        return new Response(html, {
+          headers: { "content-type": "text/html; charset=utf-8" },
+        });
+      },
+    },
   },
 });

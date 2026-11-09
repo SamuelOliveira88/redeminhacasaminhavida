@@ -44,6 +44,7 @@ function esc(s) {
 }
 
 const generated = new Set();
+const paginas = new Map();
 
 for (const broker of registry.corretores) {
   const nome = String(broker.nome || "").trim();
@@ -128,8 +129,21 @@ for (const broker of registry.corretores) {
   writeFileSync(join(dir, "index.html"), html);
   writeFileSync(join(dir, MARKER), "gerado por scripts/gerar-paginas-corretores.mjs — não edite à mão\n");
   generated.add(slug);
+  paginas.set(slug, html);
   console.log(`ok  /${slug}/  ->  ${nome}`);
 }
+
+// módulo TS com as páginas embutidas — a rota /$slug do app serve daqui (sem redirect)
+const tsOut = [
+  "// gerado por scripts/gerar-paginas-corretores.mjs — não edite à mão",
+  "export const paginasCorretores: Record<string, string> = {",
+  ...[...paginas].map(([slug, html]) => `  ${JSON.stringify(slug)}: ${JSON.stringify(html)},`),
+  "};",
+  "",
+];
+mkdirSync(join(ROOT, "src", "generated"), { recursive: true });
+writeFileSync(join(ROOT, "src", "generated", "corretores-pages.ts"), tsOut.join("\n"));
+console.log(`ok  src/generated/corretores-pages.ts (${paginas.size} páginas)`);
 
 // limpa pastas de corretores que saíram da lista (só remove as que este script criou)
 for (const entry of readdirSync(PUBLIC)) {
