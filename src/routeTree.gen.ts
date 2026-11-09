@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SlugRouteImport } from './routes/$slug'
 import { Route as CadastrosRouteImport } from './routes/cadastros'
+import { Route as ApiPublicCrmLeadRouteImport } from './routes/api/public/crm-lead'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const CadastrosRoute = CadastrosRouteImport.update({
   path: '/cadastros',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicCrmLeadRoute = ApiPublicCrmLeadRouteImport.update({
+  id: '/api/public/crm-lead',
+  path: '/api/public/crm-lead',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
   '/cadastros': typeof CadastrosRoute
+  '/api/public/crm-lead': typeof ApiPublicCrmLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
   '/cadastros': typeof CadastrosRoute
+  '/api/public/crm-lead': typeof ApiPublicCrmLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
   '/cadastros': typeof CadastrosRoute
+  '/api/public/crm-lead': typeof ApiPublicCrmLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$slug' | '/cadastros'
+  fullPaths: '/' | '/$slug' | '/cadastros' | '/api/public/crm-lead'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$slug' | '/cadastros'
-  id: '__root__' | '/' | '/$slug' | '/cadastros'
+  to: '/' | '/$slug' | '/cadastros' | '/api/public/crm-lead'
+  id: '__root__' | '/' | '/$slug' | '/cadastros' | '/api/public/crm-lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SlugRoute: typeof SlugRoute
   CadastrosRoute: typeof CadastrosRoute
+  ApiPublicCrmLeadRoute: typeof ApiPublicCrmLeadRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CadastrosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/crm-lead': {
+      id: '/api/public/crm-lead'
+      path: '/api/public/crm-lead'
+      fullPath: '/api/public/crm-lead'
+      preLoaderRoute: typeof ApiPublicCrmLeadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SlugRoute: SlugRoute,
   CadastrosRoute: CadastrosRoute,
+  ApiPublicCrmLeadRoute: ApiPublicCrmLeadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
