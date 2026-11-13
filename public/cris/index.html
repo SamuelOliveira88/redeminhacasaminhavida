@@ -1032,6 +1032,8 @@
       var LEADS_KEY = 'sb_publishable_X4Z72ng687_MWdf1nevv2w_xor0KfPA';
       // Página de origem (nas páginas de corretor vira o nome do corretor)
       var ORIGEM_PAGINA = "Cris";
+      // WhatsApp que recebe o cadastro (vazio = não abre WhatsApp)
+      var LEAD_WHATSAPP = "5511913249219";
       function mascaraTel(v){
         var d = v.replace(/\D/g,'').slice(0,11);
         if (d.length <= 2) return d ? '(' + d : '';
@@ -1056,6 +1058,7 @@
         try {
           fetch(LEADS_URL, {
             method: 'POST',
+            keepalive: true,
             headers: { 'apikey': LEADS_KEY, 'Authorization': 'Bearer ' + LEADS_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
             body: JSON.stringify({ nome: nome, whatsapp: tel, interesse: interesse || null, empreendimento: emp, origem_pagina: ORIGEM_PAGINA || 'principal' })
           });
@@ -1070,6 +1073,10 @@
           }).catch(function(){});
         } catch (e) {}
         setStatus('Pronto! Recebemos seu cadastro. Em breve um especialista vai te chamar no WhatsApp.', 'ok');
+        if (LEAD_WHATSAPP) {
+          var msg = 'Olá! Meu nome é ' + nome + '. Meu WhatsApp é ' + tel + '. Tenho interesse em ' + (interesse || 'Não sei ainda') + ' do ' + emp + '. Vim pelo site.';
+          window.open('https://wa.me/' + LEAD_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
+        }
         this.reset();
       });
       function openModal(nomeEmpreendimento){
