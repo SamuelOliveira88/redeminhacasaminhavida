@@ -3,8 +3,7 @@
     {
       "nome": "Central de Atendimento",
       "slug": "central",
-      "telefone": "5511973811001",
-      "recebeWhatsApp": true
+      "telefone": "5511973811001"
     },
     {
       "nome": "Paula",
@@ -14,8 +13,7 @@
     {
       "nome": "Cris",
       "slug": "cris",
-      "telefone": "5511913249219",
-      "recebeWhatsApp": true
+      "telefone": "5511913249219"
     },
     {
       "nome": "Ale",
