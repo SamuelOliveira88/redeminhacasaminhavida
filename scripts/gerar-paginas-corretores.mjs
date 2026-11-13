@@ -63,7 +63,6 @@ for (const broker of registry.corretores) {
 
   // 2. número matriz continua o mesmo; só a origem da página muda
   html = html.replace("var ORIGEM_PAGINA = '';", `var ORIGEM_PAGINA = ${JSON.stringify(nome)};`);
-  html = html.replace("var LEAD_WHATSAPP = MATRIZ_WHATSAPP;", `var LEAD_WHATSAPP = ${JSON.stringify(broker.recebeWhatsApp === false ? "" : phone)};`);
 
   // 5. título + descrição + compartilhamento (remove as do modelo para não duplicar)
   html = html.replace(/\s*<meta (name="description"|property="og:title"|property="og:description")[^>]*>/g, "");
