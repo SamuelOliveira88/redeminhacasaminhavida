@@ -1032,6 +1032,10 @@
       var LEADS_KEY = 'sb_publishable_X4Z72ng687_MWdf1nevv2w_xor0KfPA';
       // Página de origem (nas páginas de corretor vira o nome do corretor)
       var ORIGEM_PAGINA = "Central de Atendimento";
+      // WhatsApp do corretor que recebe o lead (nas páginas de corretor vira o número dele)
+      var LEAD_WHATSAPP = "5511973811001";
+      // Até esta data o formulário também abre o WhatsApp do corretor; depois volta a só salvar + Alexandria
+      var WHATSAPP_ATE = new Date('2026-12-13T23:59:59-03:00');
       function mascaraTel(v){
         var d = v.replace(/\D/g,'').slice(0,11);
         if (d.length <= 2) return d ? '(' + d : '';
@@ -1070,6 +1074,10 @@
             body: JSON.stringify({ nome: nome, telefone: tel, mensagem: 'Empreendimento: ' + emp + ' | Interesse: ' + (interesse || 'Não sei ainda') + ' | Página: ' + (ORIGEM_PAGINA || 'principal') })
           }).catch(function(){});
         } catch (e) {}
+        if (LEAD_WHATSAPP && new Date() <= WHATSAPP_ATE) {
+          var msg = 'Olá! Tenho interesse.\nNome: ' + nome + '\nWhatsApp: ' + tel + '\nInteresse: ' + (interesse || 'Não sei ainda') + '\nEmpreendimento: ' + emp + '\nPágina: ' + (ORIGEM_PAGINA || 'principal');
+          window.open('https://wa.me/' + LEAD_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
+        }
         setStatus('Pronto! Recebemos seu cadastro. Em breve um especialista vai te chamar no WhatsApp.', 'ok');
         this.reset();
       });
