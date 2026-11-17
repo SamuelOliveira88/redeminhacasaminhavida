@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SlugRouteImport } from './routes/$slug'
 import { Route as CadastrosRouteImport } from './routes/cadastros'
 import { Route as ApiPublicCrmLeadRouteImport } from './routes/api/public/crm-lead'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,26 @@ const ApiPublicCrmLeadRoute = ApiPublicCrmLeadRouteImport.update({
   path: '/api/public/crm-lead',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
   '/cadastros': typeof CadastrosRoute
   '/api/public/crm-lead': typeof ApiPublicCrmLeadRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
   '/cadastros': typeof CadastrosRoute
   '/api/public/crm-lead': typeof ApiPublicCrmLeadRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +62,30 @@ export interface FileRoutesById {
   '/$slug': typeof SlugRoute
   '/cadastros': typeof CadastrosRoute
   '/api/public/crm-lead': typeof ApiPublicCrmLeadRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$slug' | '/cadastros' | '/api/public/crm-lead'
+  fullPaths:
+    | '/'
+    | '/$slug'
+    | '/cadastros'
+    | '/api/public/crm-lead'
+    | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$slug' | '/cadastros' | '/api/public/crm-lead'
-  id: '__root__' | '/' | '/$slug' | '/cadastros' | '/api/public/crm-lead'
+  to:
+    | '/'
+    | '/$slug'
+    | '/cadastros'
+    | '/api/public/crm-lead'
+    | '/lovable/email/transactional/preview'
+  id:
+    | '__root__'
+    | '/'
+    | '/$slug'
+    | '/cadastros'
+    | '/api/public/crm-lead'
+    | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +93,7 @@ export interface RootRouteChildren {
   SlugRoute: typeof SlugRoute
   CadastrosRoute: typeof CadastrosRoute
   ApiPublicCrmLeadRoute: typeof ApiPublicCrmLeadRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +126,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicCrmLeadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +141,7 @@ const rootRouteChildren: RootRouteChildren = {
   SlugRoute: SlugRoute,
   CadastrosRoute: CadastrosRoute,
   ApiPublicCrmLeadRoute: ApiPublicCrmLeadRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

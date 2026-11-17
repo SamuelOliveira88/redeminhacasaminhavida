@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
+import { sendTemplateEmail } from '@/lib/email-templates/send-email'
 
 const leadSchema = z.object({
   nome: z.string().min(1).max(200),
@@ -19,6 +20,21 @@ export const Route = createFileRoute('/api/public/crm-lead')({
           payload = leadSchema.parse(await request.json())
         } catch {
           return Response.json({ ok: false, error: 'invalid' }, { status: 400 })
+        }
+
+        // Aviso por e-mail ao dono (não bloqueia o formulário se falhar)
+        try {
+          await sendTemplateEmail('novo-cadastro', 'samuelrodrigodeoliveira@gmail.com', {
+            templateData: {
+              nome: payload.nome,
+              telefone: payload.telefone,
+              email: payload.email ?? undefined,
+              mensagem: payload.mensagem ?? undefined,
+            },
+            idempotencyKey: `novo-cadastro-${crypto.randomUUID()}`,
+          })
+        } catch (err) {
+          console.error('aviso por e-mail falhou', err)
         }
 
         const token = process.env['CRM_WEBHOOK_TOKEN']
